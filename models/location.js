@@ -6,10 +6,19 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        // a short description of the character
+        // a short description of the location
         description: {
             type: DataTypes.STRING
         }
     });
+
+    // each location can contain many characters
+    Location.associate = function (models) {
+        Location.hasMany(models.Character, {
+            foreignKey: {
+            }
+        });
+    };
+
     return Location;
 };

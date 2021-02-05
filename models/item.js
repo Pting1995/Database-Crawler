@@ -26,5 +26,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         }
     });
+
+    // each item can belong to many creatures (each creature drops one item)
+    Item.associate = function (models) {
+        Item.hasMany(models.Creature, {
+        });
+    };
     return Item;
 };
