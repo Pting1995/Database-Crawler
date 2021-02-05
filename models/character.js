@@ -1,16 +1,6 @@
 // Creating our Character model
 module.exports = function (sequelize, DataTypes) {
     var Character = sequelize.define("Character", {
-        // foreign key: id of user character belongs to
-        user_id : {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        // foreign key: id of location character is at
-        location_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         //character's intelligence stat (not including items?)
         intelligence: {
             type: DataTypes.INTEGER,
@@ -37,6 +27,24 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         }
     });
-    return Character;
 
+    // makes it so each character belongs to a user
+    Character.associate = function (models) {
+        Character.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    // makes it so each every character has one Inventory
+    Character.associate = function (models) {
+        Inventory.hasOne(models.Location, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    return Character;
 };
