@@ -2,11 +2,7 @@
   "development": {
     "username": "root",
     "password": "password",
-<<<<<<< HEAD
-    "database": "databaseCrawler",
-=======
     "database": "database_crawler",
->>>>>>> d4fcc74437b31785aeb6e3298e90b32567f552f4
     "host": "localhost",
     "dialect": "mysql"
   },

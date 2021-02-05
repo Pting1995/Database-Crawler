@@ -8,9 +8,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isUsername: true
-      }
     },
     // The password cannot be null
     password: {
@@ -31,9 +28,9 @@ module.exports = function (sequelize, DataTypes) {
   // makes it so each user has many characters, when the user is deleted so is their characters
   User.associate = function (models) {
     User.hasMany(models.Character, {
-        onDelete: "cascade"
+      onDelete: "cascade"
     });
-};
+  };
 
   return User;
 
