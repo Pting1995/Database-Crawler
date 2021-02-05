@@ -27,5 +27,14 @@ module.exports = function (sequelize, DataTypes) {
   User.addHook("beforeCreate", function (user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+
+  // makes it so each user has many characters, when the user is deleted so is their characters
+  User.associate = function (models) {
+    User.hasMany(models.Character, {
+        onDelete: "cascade"
+    });
+};
+
   return User;
+
 };
