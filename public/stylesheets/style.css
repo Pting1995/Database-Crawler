@@ -2,3 +2,17 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+button.btn {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.card-content {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin: 10px;
+}
