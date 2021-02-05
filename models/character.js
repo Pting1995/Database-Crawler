@@ -16,12 +16,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        //player character or not
-        type: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
         // a short description of the character
         description: {
             type: DataTypes.STRING
@@ -45,6 +39,17 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
     };
+
+    // each character has one creature that killed them, it starts out as null and updates when the character dies
+    Character.associate = function (models) {
+        Character.hasOne(models.Creature, {
+            foreignKey: {
+                defaultValue: null
+            }
+        });
+    };
+
+
 
     return Character;
 };
