@@ -37,9 +37,9 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
-    // makes it so each every character has one Inventory
+    // makes it so each every character has one location
     Character.associate = function (models) {
-        Inventory.hasOne(models.Location, {
+        Character.hasOne(models.Location, {
             foreignKey: {
                 allowNull: false
             }
