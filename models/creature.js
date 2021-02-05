@@ -31,5 +31,6 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 0
         }
     });
+
     return Creature;
 };

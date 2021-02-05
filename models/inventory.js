@@ -13,9 +13,12 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
-    // each inventory has many items
+    // each inventory has many items, each item is in many inventories
+    // belongsToMany defines a many to many association
     Inventory.associate = function (models) {
-        Inventory.hasMany(models.Item, {
+        Inventory.belongsToMany(models.Item, {
+            foreignKey: {
+            }
         });
     };
 
