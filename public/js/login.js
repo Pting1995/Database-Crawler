@@ -1,17 +1,20 @@
 $(document).ready(function () {
-  var loginForm = $("form.login");
-  var logInUser = $("username-log-in");
-  var logInPass = $("password-log-in");
-  var signUpForm = $("form.sign-up")
-  var signUpUser = $("username-sign-up");
-  var signUpPass = $("password-sign-up");
+  
+  var loginForm = $("form.log-in");
+  var logInUsername = $("input#username-log-in");
+  var logInPass = $("input#password-log-in");
 
-  loginForm.on("submit", function (event) {
+  var signUpForm = $("form.sign-up");
+  var signUpUsername = $("input#username-sign-up");
+  var signUpPass = $("input#password-sign-up");
+
+  loginForm.on("click", function (event) {
     event.preventDefault();
     var userData = {
-      username: logInUser.val().trim(),
+      username: logInUsername.val().trim(),
       password: logInPass.val().trim()
     };
+    console.log(userData)
 
     // checks if username and password exist
     if (!userData.username || !userData.password) {
@@ -20,8 +23,8 @@ $(document).ready(function () {
 
     // clears form
     loginUser(userData.username, userData.password);
-    usernameInput.val("");
-    passwordInput.val("");
+    logInUsername.val("");
+    logInPass.val("");
   });
 
   // loginUser function posts to "api/login" route and if successful, redirects us the the index.html
@@ -36,5 +39,40 @@ $(document).ready(function () {
       .catch(function (err) {
         console.log(err);
       });
+  }
+
+  signUpForm.on("click", function (event) {
+    event.preventDefault();
+    var userData = {
+      username: signUpUsername.val().trim(),
+      password: signUpPass.val().trim()
+    };
+    console.log(userData)
+
+    // checks if username is taken?
+    if (userData.username) {
+      return;
+    }
+
+    // clears form
+    signUpUser(userData.username, userData.password);
+    signUpUsername.val("");
+    signUpPass.val("");
+  });
+
+  function signUpUser(username, password) {
+    $.post("/api/login", {
+      username: username,
+      password: password
+    })
+      .then(function(data) {
+        window.location.replace("/index");
+      })
+      .catch(handleLoginErr);
+  }
+
+  function handleLoginErr(err) {
+    $("#alert .msg").text(err.responseJSON);
+    $("#alert").fadeIn(500);
   }
 });
