@@ -34,7 +34,7 @@ $(document).ready(function () {
       password: password
     })
       .then(function () {
-        window.location.replace("/index");
+        window.location.replace("/member");
       })
       .catch(function (err) {
         console.log(err);
