@@ -17,8 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     // belongsToMany defines a many to many association
     Inventory.associate = function (models) {
         Inventory.belongsToMany(models.Item, {
-            foreignKey: {
-            }
+            through: "item_to_inventory"
         });
     };
 
