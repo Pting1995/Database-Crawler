@@ -16,35 +16,32 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        //player character or not
-        type: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
         // a short description of the character
         description: {
             type: DataTypes.STRING
         }
     });
 
-    // makes it so each character belongs to a user
+    // each character has one creature that killed them, it starts out as null and updates when the character dies
     Character.associate = function (models) {
-        Character.belongsTo(models.User, {
+        Character.hasOne(models.Creature, {
             foreignKey: {
-                allowNull: false
+                defaultValue: null
             }
         });
     };
 
-    // makes it so each every character has one location
+    // makes it so each every character has one inventory
     Character.associate = function (models) {
-        Character.hasOne(models.Location, {
+        Character.hasOne(models.Inventory, {
             foreignKey: {
-                allowNull: false
+                allowNull: false,
+                onDelete: "cascade"
             }
         });
     };
+
+
 
     return Character;
 };
