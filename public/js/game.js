@@ -60,8 +60,14 @@ function renderDeath() {
 // replace left column with a description of how you won the scenario
 // describe the item the player acquired (maybe image?)
 function renderWin() {
-    
+
     // go to next scenario
+}
+
+// Congrats! You escaped the dungeon!
+// renders stats and whatnot on left of screen
+function renderEscape() {
+
 }
 
 // on clicks for answers
