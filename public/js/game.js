@@ -49,11 +49,27 @@ function scenarioRender() {
 
 }
 
+// function to render death screen
+// shows what character was killed by
+// shows stats, explains death
+//      ie: you weren't strong enough to fight the minotaur head on
+function renderDeath() {
+
+}
+
+// replace left column with a description of how you won the scenario
+// describe the item the player acquired (maybe image?)
+function renderWin() {
+    
+    // go to next scenario
+}
+
 // on clicks for answers
 //      training/interactions
 //          somehow increment the character stats based on user choice
 //          function call to go to next scenario
 //      challenges/bosses
 //          if player is successful add item to their inventory
+//              if player unsuccessful character dies, player is taken to death screen
 //          function call to go to next scenario
 
