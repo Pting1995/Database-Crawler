@@ -1,0 +1,59 @@
+// all
+//      image on the right
+//      character description below image
+
+// training
+//      scenario description
+//      location description
+//      three options for how you train
+//          slightly different outcomes for skill improvements
+//          ie: If interacting with cat:
+//              Do you want to play with the cat? (increases dex by 5)
+//              Do you want to talk to the cat? (Increases int by 2)
+//              Do you want to throw the cat? (Increases str by 3)
+
+// challenges/bosses
+//      scenario description
+//      location description
+//      three options
+//          success depends on the option chosen and the players stats
+//      if the player beats the boss they get an item that improves their stats
+//          once the player has collected every item they win the game
+
+// Minotaur
+//      fight head on (requires 20 str)
+//      trick the minotaur (requires 10 int)
+//      outmaneuver the minotaur (requires 13 dex)
+
+// big row
+//      left column
+//          scenario specific images
+//          scenario specific descriptions and options
+//      right column
+//          character picture and character description
+
+// load sql data for character
+// take you to the correct scenario based on your characters location_id
+function Start() {
+
+    // function call for load scenario
+}
+
+// renders right column with character information
+function characterRender() {
+
+}
+
+// renders left column with scenario based on scenario information in sql database
+function scenarioRender() {
+
+}
+
+// on clicks for answers
+//      training/interactions
+//          somehow increment the character stats based on user choice
+//          function call to go to next scenario
+//      challenges/bosses
+//          if player is successful add item to their inventory
+//          function call to go to next scenario
+
