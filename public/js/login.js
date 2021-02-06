@@ -50,7 +50,7 @@ $(document).ready(function () {
     console.log(userData)
 
     // checks if username is taken?
-    if (userData.username) {
+    if (!userData.username || !userData.password) {
       return;
     }
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
   });
 
   function signUpUser(username, password) {
-    $.post("/api/login", {
+    $.post("/api/signup", {
       username: username,
       password: password
     })
