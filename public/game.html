@@ -15,7 +15,7 @@
     <div class="container">
       <a class="navbar-brand">Database Crawler</a>
       <li class="nav-item">
-        <button class="btn btn-dark" id="sign-in-up-btn" href="#">Log-in/Sign-up</button>
+        <button type="submit" class="btn btn-dark" id="btn-logout">Logout</button>
       </li>
     </div>
   </nav>
@@ -23,31 +23,49 @@
   <div class="container">
     <div class="row">
       <!-- choices/scenario -->
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="card card-content" id="scene">
           <!-- picture maybe -->
-          <h3 id="scene-type"></h3>
-          <p id="scene-text"></p>
+          <h3 id="scene-type">A wild minotaur has appeared!</h3>
+          <img src="#" class="scene-image">
+          <p id="scene-text">Adventure time Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis,
+            dolorem libero excepturi qui ducimus repudiandae delectus corrupti dolore officia debitis necessitatibus
+            quo, deleniti cumque obcaecati cupiditate molestias illo! Suscipit?</p>
+          <ul class="option-list">
+            <!-- list items going to be options -->
+            <li class="options">
+              option 1
+            </li>
+            <li class="options">
+              option 2
+            </li>
+            <li class="options">
+              option 3
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <!-- Character description -->
         <div class="card card-content">
           <h3>About your character:</h3>
-          <p id="username"></p>
-          <p id="user-str"></p>
-          <p id="user-dex"></p>
-          <p id="user-str"></p>
+          <p id="username">Character Name</p>
+          <div class="chart-div">
+            <!-- chart goes here to display character stats -->
+          </div>
+          <p class="character-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita harum
+            minima omnis suscipit et. Nam, ipsa? Quos ratione minus soluta omnis cupiditate sapiente illo mollitia
+            voluptas quae at? Rerum, magni!</p>
         </div>
       </div>
-      <!-- rows of other people's characters if we have time -->
     </div>
   </div>
 
-  <script src="jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/navbar.js"></script>
   <script type="text/javascript" src="js/game.js"></script>
 
 </body>

@@ -1,10 +1,10 @@
 $(document).ready(function () {
-  
-  var loginForm = $("form.log-in");
+
+  var loginForm = $("button#btn-login");
   var logInUsername = $("input#username-log-in");
   var logInPass = $("input#password-log-in");
 
-  var signUpForm = $("form.sign-up");
+  var signUpForm = $("button#btn-signup");
   var signUpUsername = $("input#username-sign-up");
   var signUpPass = $("input#password-sign-up");
 
@@ -34,7 +34,7 @@ $(document).ready(function () {
       password: password
     })
       .then(function () {
-        window.location.replace("/index");
+        window.location.replace("/member");
       })
       .catch(function (err) {
         console.log(err);
@@ -50,7 +50,7 @@ $(document).ready(function () {
     console.log(userData)
 
     // checks if username is taken?
-    if (userData.username) {
+    if (!userData.username || !userData.password) {
       return;
     }
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
   });
 
   function signUpUser(username, password) {
-    $.post("/api/login", {
+    $.post("/api/signup", {
       username: username,
       password: password
     })
