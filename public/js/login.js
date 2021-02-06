@@ -1,10 +1,10 @@
 $(document).ready(function () {
-  
-  var loginForm = $("form.log-in");
+
+  var loginForm = $("button#btn-login");
   var logInUsername = $("input#username-log-in");
   var logInPass = $("input#password-log-in");
 
-  var signUpForm = $("form.sign-up");
+  var signUpForm = $("button#btn-signup");
   var signUpUsername = $("input#username-sign-up");
   var signUpPass = $("input#password-sign-up");
 
