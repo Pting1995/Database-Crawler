@@ -35,7 +35,6 @@
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
 function Start() {
-
     // function call for load scenario
 }
 
