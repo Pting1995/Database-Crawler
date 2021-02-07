@@ -65,8 +65,8 @@ $(document).ready(function () {
       username: username,
       password: password
     })
-      .then(function(data) {
-        window.location.replace("/index");
+      .then(function (data) {
+        window.location.replace("/member");
       })
       .catch(handleLoginErr);
   }

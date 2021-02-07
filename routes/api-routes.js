@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const { Router } = require("express");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -19,7 +20,7 @@ module.exports = function (app) {
       password: req.body.password
     })
       .then(function () {
-        res.redirect(307, "/api/login");
+        res.redirect(307, "/api/member");
       })
       .catch(function (err) {
         res.status(401).json(err);
@@ -45,19 +46,50 @@ module.exports = function (app) {
         id: req.user.id
       });
     }
-    getUserCharacter(req);
+    // getUserCharacter(req);
   });
+
+  app.put("/", (req, res) => {
+    db.Character.update(
+      {
+        strength: req.body.strength
+
+      },
+      {
+        intelligence: req.body.intelligence
+      },
+
+      {
+        where: { id: req.body.id }
+      }
+
+
+
+    ).then(() => res.send())
+  })
   // first find user id based on username
   // using user id find character associated with that user (where killedby is null)
   function getUserCharacter(req) {
-    var newCharacter = {intelligence: 0, strength: 0, dexterity: 0, description: "none", UserId: 1};
-    db.Character.create(newCharacter).then(function(dbCharacter) {
+    var newCharacter = { intelligence: 0, strength: 0, dexterity: 0, description: "none", UserId: 1 };
+    db.Character.create(newCharacter).then(function (dbCharacter) {
       console.log(dbCharacter);
-      db.User.findOne({ where: { username: req.user.username } }).then(function(dbUser) {
-        db.Character.findOne({ where: { UserId: dbUser.id } }).then(function(dbCreated) {
+      db.User.findOne({ where: { username: req.user.username } }).then(function (dbUser) {
+        db.Character.findOne({ where: { UserId: dbUser.id } }).then(function (dbCreated) {
           console.log(dbCreated);
         });
       });
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
 };
