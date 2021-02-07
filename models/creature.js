@@ -41,5 +41,14 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
+    // each character has one creature that killed them, it starts out as null and updates when the character dies
+    Creature.associate = function (models) {
+        Creature.belongsTo(models.Item, {
+            foreignKey: {
+                defaultValue: null
+            }
+        });
+    };
+
     return Creature;
 };

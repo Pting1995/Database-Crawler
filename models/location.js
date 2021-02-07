@@ -16,13 +16,8 @@ module.exports = function (sequelize, DataTypes) {
     Location.associate = function (models) {
         Location.hasMany(models.Character, {
             foreignKey: {
+                defaultValue: 1
             }
-        });
-    };
-
-    // each location has several options
-    Location.associate = function (models) {
-        Location.hasMany(models.Option, {
         });
     };
 
