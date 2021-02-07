@@ -37,7 +37,7 @@
 var characterDescription = $(".character-description");
 var sceneName = $("#scene-type");
 var sceneImage = $(".scene-image");
-var sceneText = $(".scene-text");
+var sceneText = $("#scene-text");
 var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
@@ -64,16 +64,18 @@ function characterRender() {
 }
 
 // renders left column with scenario based on scenario information in sql database
-function scenarioRender() {
-    $.get("/api/scenario").then(function (data) {
+function scenarioRender(id) {
+    $.get("/api/scenario/" + id).then(function (data) {
         sceneName.text(data.name);
         sceneImage.attr("src", data.picture);
-        sceneText.text(data.text);
+        sceneText.text(data.description);
         option1.text(data.option1);
         option2.text(data.option2);
         option3.text(data.option3);
-    })
+    });
 }
+
+scenarioRender(1);
 
 // function to render death screen
 // shows what character was killed by
