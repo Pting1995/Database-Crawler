@@ -55,20 +55,19 @@ module.exports = function (app) {
   //   });
   // })
 
+  app.get("/api/scenario/:id", function (req, res) {
+    db.Location.findOne({ where: { id: req.params.id } }).then(function (data) {
+      console.log(data);
+      res.json(data);
+    });
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  app.get("/api/character/:id", function (req, res) {
+    db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
+      console.log(data);
+      res.json(data);
+    });
+  });
 
   app.put("/", (req, res) => {
     db.Character.update(
@@ -83,8 +82,6 @@ module.exports = function (app) {
       {
         where: { id: req.body.id }
       }
-
-
 
     ).then(() => res.send())
   })
