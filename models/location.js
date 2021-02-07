@@ -12,8 +12,9 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // each location can contain many characters
+    // each location has several options
     Location.associate = function (models) {
+<<<<<<< HEAD
         Location.hasMany(models.Character, {
             foreignKey: {
                 defaultValue: 1
@@ -21,5 +22,17 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
+=======
+        Location.hasMany(models.Option, {
+        });
+    };
+
+    // each location can contain many characters
+    Location.associate = function (models) {
+        Location.hasMany(models.Character, {
+        });
+    };
+
+>>>>>>> main
     return Location;
 };
