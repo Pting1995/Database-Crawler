@@ -38,6 +38,13 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
+
+  // each location has several options
+  Option.associate = function (models) {
+    Option.belongsTo(models.Location, {
+    });
+  };
+
   return Option;
 
 };
