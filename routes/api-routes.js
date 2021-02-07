@@ -49,6 +49,27 @@ module.exports = function (app) {
     // getUserCharacter(req);
   });
 
+  app.get("/api/scenario", function (req, res) {
+    db.Location.findOne({ where: { : req.user.username } }).then(function (dbUser) {
+
+    });
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   app.put("/", (req, res) => {
     db.Character.update(
       {
