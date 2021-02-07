@@ -1,7 +1,11 @@
-// $(document).ready(function () {
-//   // This file just does a GET request to figure out which user is logged in
-//   // and updates the HTML on the page
-//   $.get("/api/user_data").then(function (data) {
-//     $(".member-name").text(data.username);
-//   });
-// });
+$(document).ready(function () {
+    var cont = $("#continue-char");
+    var restart = $("#make-char");
+    
+    cont.on("click", function (event) {
+        window.location.replace("/game.js");
+    });
+    restart.on("click", function (event) {
+        window.location.replace("/game.js");
+    })
+});
