@@ -24,20 +24,6 @@ module.exports = function (sequelize, DataTypes) {
 
     // each character has one creature that killed them, it starts out as null and updates when the character dies
     Character.associate = function (models) {
-<<<<<<< HEAD
-        Character.belongsTo(models.Location, {
-=======
-        Character.belongsTo(models.Creature, {
->>>>>>> main
-            foreignKey: {
-                defaultValue: 1
-            }
-        });
-    };
-
-<<<<<<< HEAD
-=======
-    Character.associate = function (models) {
         Character.belongsTo(models.Location, {
             foreignKey: {
                 defaultValue: 1
@@ -45,8 +31,6 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
-    // makes it so each every character has one inventory
->>>>>>> main
     Character.associate = function (models) {
         Character.belongsTo(models.Creature, {
             foreignKey: {
