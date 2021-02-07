@@ -45,5 +45,19 @@ module.exports = function (app) {
         id: req.user.id
       });
     }
+    getUserCharacter(req);
   });
+  // first find user id based on username
+  // using user id find character associated with that user (where killedby is null)
+  function getUserCharacter(req) {
+    var newCharacter = {intelligence: 0, strength: 0, dexterity: 0, description: "none", UserId: 1};
+    db.Character.create(newCharacter).then(function(dbCharacter) {
+      console.log(dbCharacter);
+      db.User.findOne({ where: { username: req.user.username } }).then(function(dbUser) {
+        db.Character.findOne({ where: { UserId: dbUser.id } }).then(function(dbCreated) {
+          console.log(dbCreated);
+        });
+      });
+    });
+  }
 };
