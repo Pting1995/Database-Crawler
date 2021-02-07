@@ -1,3 +1,5 @@
+
+
 // all
 //      image on the right
 //      character description below image
@@ -32,20 +34,45 @@
 //      right column
 //          character picture and character description
 
+var characterDescription = $(".character-description");
+var sceneName = $("#scene-type");
+var sceneImage = $(".scene-image");
+var sceneText = $(".scene-text");
+var option1 = $("#option1");
+var option2 = $("#option2");
+var option3 = $("#option3");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
+
 function Start() {
     // function call for load scenario
+    $.get("/api/start").then(function (data) {
+
+    })
 }
 
 // renders right column with character information
 function characterRender() {
+    $.get("/api/characters").then(function (data) {
 
+        characterDescription.text(data.description);
+        // data.strength
+        // data.intelligence
+        // data.dexterity
+        //chart goes here
+    })
 }
 
 // renders left column with scenario based on scenario information in sql database
 function scenarioRender() {
-
+    $.get("/api/scenario").then(function (data) {
+        sceneName.text(data.name);
+        sceneImage.attr("src", data.picture);
+        sceneText.text(data.text);
+        option1.text(data.option1);
+        option2.text(data.option2);
+        option3.text(data.option3);
+    })
 }
 
 // function to render death screen

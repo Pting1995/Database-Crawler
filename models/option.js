@@ -37,6 +37,18 @@ module.exports = function (sequelize, DataTypes) {
       defautValue: 0
     }
   });
+  // each location has several options
+  Option.associate = function (models) {
+    Option.belongsTo(models.Location, {
+    });
+  };
+
+
+  // each location has several options
+  Option.associate = function (models) {
+    Option.belongsTo(models.Location, {
+    });
+  };
 
   return Option;
 
