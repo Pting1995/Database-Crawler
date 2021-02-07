@@ -49,11 +49,11 @@ module.exports = function (app) {
     // getUserCharacter(req);
   });
 
-  app.get("/api/scenario", function (req, res) {
-    db.Location.findOne({ where: { : req.user.username } }).then(function (dbUser) {
+  // app.get("/api/scenario", function (req, res) {
+  //   db.locations.findOne({ where: { : req.user.username } }).then(function (dbUser) {
 
-    });
-  })
+  //   });
+  // })
 
 
 
