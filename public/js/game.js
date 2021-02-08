@@ -76,11 +76,11 @@ function scenarioRender(id) {
         sceneImage.attr("src", data.picture);
         sceneText.text(data.description);
     });
-    // $.get("/api/options/" + id).then(function (data) {
-    //     option1.text(data[0].text);
-    //     option2.text(data[1].text);
-    //     option3.text(data[2].text);
-    // });
+    $.get("/api/options/" + id).then(function (data) {
+        option1.text(data[0].text);
+        option2.text(data[1].text);
+        option3.text(data[2].text);
+    });
 }
 
 // function to render death screen
@@ -107,7 +107,7 @@ function renderEscape() {
 Start();
 
 option.on("click", function() {
-    
+
 })
 
 // on clicks for answers
