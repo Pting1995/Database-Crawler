@@ -156,7 +156,7 @@ $(document).on("click", ".option", function (event) {
     var optionId = $(this).attr("data-value");
     $.get("/api/option/" + optionId).then(function (optionData) {
         $.get("/api/characters/" + characterId).then(function (characterData) {
-            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
+            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 11) {
                 // resolution text
                 sceneText.text(optionData.resolution);
                 // increment stats
@@ -183,6 +183,22 @@ $(document).on("click", ".option", function (event) {
                 });
                 // get item
             }
+            else if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
+                // take to ending screen
+                var info = {
+                    id: characterData.id,
+                    death_message: "This character escaped!"
+                };
+                // succeed!
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/kill/character",
+                    data: info
+                }).then(function () {
+                    console.log("getting end");
+                    window.location.replace("/ending");
+                });
+            }
             else {
                 var info = {
                     id: characterData.id,
@@ -191,10 +207,10 @@ $(document).on("click", ".option", function (event) {
                 // die
                 $.ajax({
                     method: "PUT",
-                    url: "/api/update/character",
+                    url: "/api/kill/character",
                     data: info
                 }).then(function () {
-                    $.get("/end");
+                    window.location.replace("/ending");
                 });
 
             }
