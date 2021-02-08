@@ -6,6 +6,7 @@ $(document).ready(function () {
         window.location.replace("/game");
     });
     restart.on("click", function (event) {
+        $.get("/api/restart");
         window.location.replace("/game");
     })
 });

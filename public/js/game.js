@@ -92,11 +92,8 @@ function characterRender(id) {
         });
 
         characterDescription.text(data.description);
-        // data.strength
-        // data.intelligence
-        // data.dexterity
-        //chart goes here
-        // IMPORTANT RENDER A LIST OF ITEMS FOR THE CHARACTER
+        // find all items associated with this characters id in inventory
+        // display them and their stats
     });
 }
 
@@ -181,7 +178,12 @@ $(document).on("click", ".option", function (event) {
                     option3.attr("class", "continue");
                     option3.text("CLICK TO CONTINUE");
                 });
+
                 // get item
+                //      find item id associated with that boss
+                //      if it is not NULL
+                //      add it to inventory with its id and character id
+
             }
             else if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
                 // take to ending screen
