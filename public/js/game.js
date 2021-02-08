@@ -42,7 +42,8 @@ var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
 var option = $(".option");
-var chartSpot = $("myChart")
+var chartSpot = $("myChart");
+var itemList = $(".item-list");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
 var characterId;
@@ -61,7 +62,7 @@ function Start() {
 // renders right column with character information
 function characterRender(id) {
     $.get("/api/characters/" + id).then(function (data) {
-
+        characterId = id;
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -92,7 +93,8 @@ function characterRender(id) {
         // data.intelligence
         // data.dexterity
         //chart goes here
-    })
+        // IMPORTANT RENDER A LIST OF ITEMS FOR THE CHARACTER
+    });
 }
 
 // renders left column with scenario based on scenario information in sql database
@@ -104,8 +106,11 @@ function scenarioRender(id) {
     });
     $.get("/api/options/" + id).then(function (data) {
         option1.text(data[0].text);
+        option1.attr("data-value", data[0].id);
         option2.text(data[1].text);
+        option2.attr("data-value", data[1].id);
         option3.text(data[2].text);
+        option3.attr("data-value", data[2].id);
     });
 }
 
@@ -132,9 +137,71 @@ function renderEscape() {
 
 Start();
 
-option.on("click", function () {
+// needs to go and get the option and all of its data
+// compare your stats to the required stats
+// if you're good
+//      update increment your stats appropriately
+//      update increase location by one
+//      if there is an item get appropriate item
+//      then render resolution text in scenario description
+//      replace the options with a continue button
+// if you're bad
+//      DIE
+//      render die message in scenario description
+$(document).on("click", ".option", function (event) {
+    event.preventDefault();
+    var optionId = $(this).attr("data-value");
+    console.log(optionId);
+    $.get("/api/option/" + optionId).then(function (optionData) {
+        $.get("/api/characters/" + characterId).then(function (characterData) {
+            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
+                // resolution text
+                sceneText.text(optionData.resolution);
+                // increment stats
+                var info = {
+                    id: characterData.id,
+                    newStr: characterData.strength + optionData.str_gain,
+                    newInt: characterData.intelligence + optionData.int_gain,
+                    newDex: characterData.dexterity + optionData.dex_gain,
+                    newLoc: characterData.LocationId + 1
+                };
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/update/character",
+                    data: info
+                }).then(function () {
+                    console.log("we are at the continue phase");
+                    option1.attr("class", "continue");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.attr("class", "continue");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.attr("class", "continue");
+                    option3.text("CLICK TO CONTINUE");
+                });
+                // get item
+                // replace options with continue
+            }
+            else {
+                // die
+            }
+        });
+    });
+});
+function updateTodo(todo) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/todos",
+        data: todo
+    }).then(getTodos);
+}
 
-})
+$(document).on("click", ".continue", function (event) {
+    event.preventDefault();
+    option1.attr("class", "option");
+    option2.attr("class", "option");
+    option3.attr("class", "option");
+    Start();
+});
 
 // on clicks for answers
 //      training/interactions
