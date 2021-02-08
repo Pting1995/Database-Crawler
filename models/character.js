@@ -4,17 +4,20 @@ module.exports = function (sequelize, DataTypes) {
         //character's intelligence stat (not including items?)
         intelligence: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         //character's strength stat (not including items?)
         strength: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         //character's dexterity stat (not including items?)
         dexterity: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 0
         },
         // a short description of the character
         description: {

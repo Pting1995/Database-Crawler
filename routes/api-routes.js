@@ -55,62 +55,64 @@ module.exports = function (app) {
   //   });
   // })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  app.put("/", (req, res) => {
-    db.Character.update(
-      {
-        strength: req.body.strength
-
-      },
-      {
-        intelligence: req.body.intelligence
-      },
-
-      {
-        where: { id: req.body.id }
-      }
-
-
-
-    ).then(() => res.send())
-  })
-  // first find user id based on username
-  // using user id find character associated with that user (where killedby is null)
-  function getUserCharacter(req) {
-    var newCharacter = { intelligence: 0, strength: 0, dexterity: 0, description: "none", UserId: 1 };
-    db.Character.create(newCharacter).then(function (dbCharacter) {
-      console.log(dbCharacter);
-      db.User.findOne({ where: { username: req.user.username } }).then(function (dbUser) {
-        db.Character.findOne({ where: { UserId: dbUser.id } }).then(function (dbCreated) {
-          console.log(dbCreated);
-        });
-      });
+  app.get("/api/scenario/:id", function (req, res) {
+    db.Location.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
     });
-  }
+  });
+
+  app.get("/api/start", function (req, res) {
+    // find character belonging to user id
+    db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
+      // if there are none
+      if (data[0] == null) {
+        // create one
+        db.Character.create({
+          UserId: req.user.id,
+          description: "this is a very cool character"
+          // then search again and return its data
+        }).then(function() {
+          db.Character.findOne({ where: { UserId: req.user.id } }).then(function (data) {
+            res.json(data);
+          });
+        });
+      }
+      else (res.json(data[0]));
+    });
+  });
+
+  app.get("/api/options/:id", function (req, res) {
+    db.Option.findAll({ where: { LocationId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets item by name
+  app.get("/api/item/:name", function (req, res) {
+    db.Item.findOne({ where: { name: req.params.name } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets item by id
+  app.get("/api/item/:id", function (req, res) {
+    db.Item.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets all item ids of a specific character
+  app.get("/api/inventory/:id", function (req, res) {
+    db.Item.findAll({ where: { CharacterId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
 
 
 
-
-
-
-
-
-
-
-
-
+  app.get("/api/characters/:id", function (req, res) {
+    db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
 };
