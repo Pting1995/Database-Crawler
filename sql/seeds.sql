@@ -33,7 +33,7 @@ VALUES ("Smash the boulder (with your fist)", "Your fist is sore, but you feel s
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Deftly leap over the boulder", "Wow! What a feat of acrobatics! You feel lighter on your feet already!", 0, 0, 0, 2, 3, 0, 1);
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Use your head?", "You smash your head repeatedly into the boulder until it somehow ends up out of your way (?) You seem to be having trouble recalling personal details, and the coordination in your fingers is on the fritz. Could you be concussed?", 0, 0, 0, 6, -1, -1, 1);
+VALUES ("Use your head?", "You smash your head repeatedly into the boulder until it somehow ends up out of your way (?) You seem to be having trouble recalling personal details, and the coordination in your fingers is on the fritz. Could you be concussed?", 0, 0, 0, 5, 0, 0, 1);
 
 
 -- pigeon
@@ -63,7 +63,7 @@ VALUES ("Fight", "The goblin is approaching you with hungry eyes and seems to wa
 
 -- spider
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Fight Spider", "You do not fear spiders and have had a lot of experience in killing them at home.",  0, 0, 0, 7, 0, -2, 5);
+VALUES ("Fight Spider", "You do not fear spiders and have had a lot of experience in killing them at home.",  0, 0, 0, 5, 0, 0, 5);
 INSERT INTO options (text, resolution,str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Go for the treasure chest", "You attempt to run through to open the treasure chest, but you end up getting caught in some sticky web, which slows you down. You manage to reach the treasure chest, while the spider is still sleeping.", 0, 0, 0, 0, 5, 0, 5);
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
@@ -117,7 +117,6 @@ INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_g
 VALUES ("Challenge the monkey to a race across the jungle.", "Even though his body is much more suited to the jungle my fitness allows you to beat him. The monkey gives you a BIG EFFIN SUWOARD. He clearly doesn't need such a big weapon that slows him down so much.", "He easily outspeeds me. In an effort to catch up I overshoot a vine and fall to the floor. My vision goes black I am dead.", 0, 20, 0, 0, 10, 0, 11);
 INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Talk to the monkey", "The monkey replies with an EEK EEK but he looks friendly enough. I leave some fruit on a nearby leaf and continue on my adventure. Before I make it out of the jungle the monkey catches up to me with fruit still smeared over his face. With a loud thump he drops a BIG EFFIN SUWOARD near me. I give a nod to the monkey and the monkey runs back into the forest.", "Something I said to the monkey made it angry. He throws a coconut at my head. My vision goes black. I am dead.", 0, 0, 10, 0, 0, 10, 11);
-
 
 
 
