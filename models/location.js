@@ -8,21 +8,28 @@ module.exports = function (sequelize, DataTypes) {
         },
         // a short description of the location/encounter
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING(1024)
+        },
+        img: {
+            type: DataTypes.STRING,
+            default: "#"
+        },
+        createdAt: {
+            type: DataTypes.STRING,
+            default: null
+        },
+        updatedAt: {
+            type: DataTypes.STRING,
+            default: null
         }
     });
 
-    // each location can contain many characters
+    // each location has several options
     Location.associate = function (models) {
         Location.hasMany(models.Character, {
             foreignKey: {
+                defaultValue: 1
             }
-        });
-    };
-
-    // each location has several options
-    Location.associate = function (models) {
-        Location.hasMany(models.Option, {
         });
     };
 
