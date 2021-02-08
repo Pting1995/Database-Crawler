@@ -42,7 +42,7 @@ var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
 var option = $(".option");
-var chartSpot = $("myChart");
+var chartDiv = $("#chart-div");
 var itemList = $(".item-list");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
@@ -61,6 +61,10 @@ function Start() {
 
 // renders right column with character information
 function characterRender(id) {
+    chartDiv.empty();
+    var newCanvas = $("<canvas>");
+    newCanvas.attr("id", "myChart");
+    chartDiv.append(newCanvas);
     $.get("/api/characters/" + id).then(function (data) {
         characterId = id;
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -72,7 +76,7 @@ function characterRender(id) {
             data: {
                 labels: ['Strength', 'Intelligence', 'Dexterity'],
                 datasets: [{
-                    label: 'My First dataset',
+                    label: 'Character Stats',
                     backgroundColor: ['rgb(214, 40, 40)', 'rgb(46, 94, 170)', 'rgb(50, 160, 93)'],
                     borderColor: 'white',
                     data: [
@@ -170,6 +174,7 @@ $(document).on("click", ".option", function (event) {
                     url: "/api/update/character",
                     data: info
                 }).then(function () {
+                    // characterRender(info.id);
                     console.log("we are at the continue phase");
                     option1.attr("class", "continue");
                     option1.text("CLICK TO CONTINUE");
