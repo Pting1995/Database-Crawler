@@ -6,6 +6,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    resolution: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     str_req: {
       type: DataTypes.INTEGER,
       allowNull: false,
