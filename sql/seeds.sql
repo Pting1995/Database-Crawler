@@ -22,6 +22,34 @@ VALUES ("Old Couple", 'You are walking down a hallway when you hear the bickerin
 INSERT INTO location (name, description) 
 VALUES ("White Skirt’s Howls’", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?");
 
+-- raffi
+-- boulder
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Smash the boulder (with your fist)", "Your fist is sore, but you feel stronger. The boulder collapses into a heap of rubble." 0, 0, 0, 5, 0, 0);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Deftly leap over the boulder", "Wow! What a feat of acrobatics! You feel lighter on your feet already!" 0, 0, 0, 2, 3, 0);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Use your head?", "You smash your head repeatedly into the boulder until it somehow ends up out of your way (?) You seem to be having trouble recalling personal details, and the coordination in your fingers is on the fritz. Could you be concussed?" 0, 0, 0, 6, -1, -1);
+
+
+-- pigeon
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Sweep the pieces off the board and smash his majesty with it.", "I mean I guess it was the obvious solution. I bet you’re not very fun at parties..." 0, 0, 0, 2, 3, 0);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Walk around the pigeon and out of the room.", "Those nunchucks do look like they’ll come in handy. Still, that’s kind of a dick move, ya know? Who hurt you? You perform a few practice swings of the nunchucks and feel a little bit more dexterous." 0, 0, 0, 0, 1, 2);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Try to beat the pigeon at chess.", "Wow ok. You did not know what you were getting yourself into, this pigeon must be grandmaster level at chess. At the same time you can tell it’s not really trying to win. After taking all of your pieces except your king and 1 pawn, the pigeon seems content to keep the game going on indefinitely. After what feels like hours, the pigeon actually falls asleep, and you move to the next room feeling slightly sheepish." 0, 0, 0, 0, 0, 5);
+
+-- furry
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Attempt to help them remove the costume", "After what seems like a herculean effort on both of your parts, you manage to divest the furry of their fuzzy prison. When you finally get the mask off them you scream in shock, they look exactly like you! You make a mad dash for the exit to the next room, not bothering to look back until the door is closed behind you." 0, 0, 0, 3, 2, 0);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Try to steal their nunchucks", "Those nunchucks do look like they’ll come in handy. Still, that’s kind of a dick move, ya know? Who hurt you? You perform a few practice swings of the nunchucks and feel a little bit more dexterous." 0, 0, 0, 0, 3, 2);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Insult their costume", "You insult the furrys costume. The howl that they let out in response contains so much furry (I mean fury) that for a second you feel scared for your life. However it quickly becomes clear that the furry isn’t capable of very coordinated movement while blind and dressed up like they are, and you dance lithely around them to the exit of the room as they stumble towards where you were when you last spoke, arms stretched out for balance. You feel lighter on your feet!" 0, 0, 0, 0, 5, 0);
+
+
+-- peter
 -- cat
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("Find a feather and use it to play with the cat", "The cat is a furmidable opponent as it furiously chases the feather in your hand. Your hand is very scratched up but you feel much faster" 0, 0, 0, 0, 5, 0);
