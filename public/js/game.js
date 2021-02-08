@@ -42,6 +42,7 @@ var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
 var option = $(".option");
+var chartSpot = $("myChart")
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
 var characterId;
@@ -60,6 +61,31 @@ function Start() {
 // renders right column with character information
 function characterRender(id) {
     $.get("/api/characters/" + id).then(function (data) {
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'pie',
+
+            // The data for our dataset
+            data: {
+                labels: ['Strength', 'Intelligence', 'Dexterity'],
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: ['rgb(214, 40, 40)', 'rgb(46, 94, 170)', 'rgb(50, 160, 93)'],
+                    borderColor: 'white',
+                    data: [
+                        data.strength,
+                        data.intelligence,
+                        data.dexterity
+
+                    ]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
 
         characterDescription.text(data.description);
         // data.strength
@@ -106,7 +132,7 @@ function renderEscape() {
 
 Start();
 
-option.on("click", function() {
+option.on("click", function () {
 
 })
 

@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link href="stylesheets/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body>
@@ -28,7 +29,11 @@
           <!-- picture maybe -->
           <h3 id="scene-type">A wild minotaur has appeared!</h3>
           <img src="#" class="scene-image">
-          <p id="scene-text">Scenario 3: In the next room there is a person (you think?) wearing a furry suit and holding nunchucks. The furry suit is purple. You cannot tell what animal it is supposed to represent, but you feel deeply unnerved. The furry perks up noticeable as you enter the room, but they seem to scan right past you as if they don’t see you. “Hello? Is someone there? I forgot to put eyeholes in this thing! And I can’t seem to get it off. My god I’m so miserable. Please, help me!”</p>
+          <p id="scene-text">Scenario 3: In the next room there is a person (you think?) wearing a furry suit and
+            holding nunchucks. The furry suit is purple. You cannot tell what animal it is supposed to represent, but
+            you feel deeply unnerved. The furry perks up noticeable as you enter the room, but they seem to scan right
+            past you as if they don’t see you. “Hello? Is someone there? I forgot to put eyeholes in this thing! And I
+            can’t seem to get it off. My god I’m so miserable. Please, help me!”</p>
           <ul class="option-list">
             <!-- list items going to be options -->
             <li class="options" id="option1">
@@ -47,10 +52,9 @@
         <!-- Character description -->
         <div class="card card-content">
           <h3>About your character:</h3>
+          <canvas id="myChart"></canvas>
           <p id="username">Character Name</p>
-          <div class="chart-div">
-            <!-- chart goes here to display character stats -->
-          </div>
+
           <p class="character-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita harum
             minima omnis suscipit et. Nam, ipsa? Quos ratione minus soluta omnis cupiditate sapiente illo mollitia
             voluptas quae at? Rerum, magni!</p>
