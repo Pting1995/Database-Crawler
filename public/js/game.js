@@ -41,6 +41,7 @@ var sceneText = $("#scene-text");
 var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
+var option = $(".option");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
 var characterId;
@@ -104,6 +105,10 @@ function renderEscape() {
 }
 
 Start();
+
+option.on("click", function() {
+    
+})
 
 // on clicks for answers
 //      training/interactions
