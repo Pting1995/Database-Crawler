@@ -42,7 +42,8 @@ var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
 var option = $(".option");
-var chartSpot = $("myChart")
+var chartSpot = $("myChart");
+var itemList = $(".item-list");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
 var characterId;
@@ -92,6 +93,7 @@ function characterRender(id) {
         // data.intelligence
         // data.dexterity
         //chart goes here
+        // IMPORTANT RENDER A LIST OF ITEMS FOR THE CHARACTER
     })
 }
 
@@ -132,9 +134,24 @@ function renderEscape() {
 
 Start();
 
+// needs to go and get the option and all of its data
+// compare your stats to the required stats
+// if you're good
+//      update increment your stats appropriately
+//      update increase location by one
+//      if there is an item get appropriate item
+//      then render resolution text in scenario description
+//      replace the options with a continue button
+// if you're bad
+//      DIE
+//      render die message in scenario description
 option.on("click", function () {
 
-})
+});
+
+$(document).on("click", "#continue", function(event){
+    Start();
+});
 
 // on clicks for answers
 //      training/interactions
