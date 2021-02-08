@@ -160,16 +160,23 @@ $(document).on("click", ".option", function (event) {
                 // increment stats
                 var info = {
                     id: characterData.id,
-                    newStr : characterData.strength + optionData.str_gain,
-                    newInt : characterData.intelligence + optionData.int_gain,
-                    newDex : characterData.dexterity + optionData.dex_gain,
-                    newLoc : characterData.LocationId + 1};
+                    newStr: characterData.strength + optionData.str_gain,
+                    newInt: characterData.intelligence + optionData.int_gain,
+                    newDex: characterData.dexterity + optionData.dex_gain,
+                    newLoc: characterData.LocationId + 1
+                };
                 $.ajax({
                     method: "PUT",
                     url: "/api/update/character",
                     data: info
                 }).then(function () {
-                    Start();
+                    console.log("we are at the continue phase");
+                    option1.attr("class", "continue");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.attr("class", "continue");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.attr("class", "continue");
+                    option3.text("CLICK TO CONTINUE");
                 });
                 // get item
                 // replace options with continue
@@ -188,7 +195,11 @@ function updateTodo(todo) {
     }).then(getTodos);
 }
 
-$(document).on("click", "#continue", function (event) {
+$(document).on("click", ".continue", function (event) {
+    event.preventDefault();
+    option1.attr("class", "option");
+    option2.attr("class", "option");
+    option3.attr("class", "option");
     Start();
 });
 
