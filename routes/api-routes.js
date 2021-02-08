@@ -57,14 +57,38 @@ module.exports = function (app) {
 
   app.get("/api/scenario/:id", function (req, res) {
     db.Location.findOne({ where: { id: req.params.id } }).then(function (data) {
-      console.log(data);
       res.json(data);
     });
   });
 
-  app.get("/api/character/:id", function (req, res) {
+  app.get("/api/start", function (req, res) {
+    // find character belonging to user id
+    db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
+      // if there are none
+      if (data[0] == null) {
+        // create one
+        db.Character.create({
+          UserId: req.user.id,
+          description: "this is a very cool character"
+          // then search again and return its data
+        }).then(function() {
+          db.Character.findOne({ where: { UserId: req.user.id } }).then(function (data) {
+            res.json(data);
+          });
+        });
+      }
+      else (res.json(data[0]));
+    });
+  });
+
+  app.get("/api/options/:id", function (req, res) {
+    db.Option.findAll({ where: { LocationId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/characters/:id", function (req, res) {
     db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
-      console.log(data);
       res.json(data);
     });
   });
@@ -85,29 +109,4 @@ module.exports = function (app) {
 
     ).then(() => res.send())
   })
-  // first find user id based on username
-  // using user id find character associated with that user (where killedby is null)
-  function getUserCharacter(req) {
-    var newCharacter = { intelligence: 0, strength: 0, dexterity: 0, description: "none", UserId: 1 };
-    db.Character.create(newCharacter).then(function (dbCharacter) {
-      console.log(dbCharacter);
-      db.User.findOne({ where: { username: req.user.username } }).then(function (dbUser) {
-        db.Character.findOne({ where: { UserId: dbUser.id } }).then(function (dbCreated) {
-          console.log(dbCreated);
-        });
-      });
-    });
-  }
-
-
-
-
-
-
-
-
-
-
-
-
 };
