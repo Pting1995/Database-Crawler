@@ -76,6 +76,7 @@ INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_
 VALUES ('Inquire about the "white skirt"', 'The woman screams at you for not helping while the old man continues to drag the cart behind him. Maybe i should have helped them… As you watch them scurry away you notice the steel rickshaw has a fist-sized hole punched in the back of it. I wonder what they did to piss “white-skirt” off...', 0, 0, 0, 0, 0, 3);
 
 -- austin
+-- minotaur
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("Fight minotaur", "Use the weapon that you received earlier and decide to stand your ground",0, 0, 0, 10, 0, 0);
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
@@ -83,6 +84,7 @@ VALUES ("Request trade", "You come up with a plan to offer a trade.", 0, 0, 0, 0
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("Find a different solution","Attempt to tire out the minotaur", 0, 0, 0, 2, 10, 2);
 
+-- goblin
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("You attempt to ask the goblin for help because you are lost and have no clue on how to get out of the dungeon", "he gives you his weapon",  0, 0, 0, 0, 0, 10);
 INSERT INTO options (text, resolution,str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
@@ -90,6 +92,7 @@ VALUES ("Run away", "The goblin is approaching you with hungry eyes and seems to
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("Fight", "The goblin is approaching you with hungry eyes and seems to want to kill you. You notice that he is moving very slowly and is carrying a weapon that looks useful. You come up with a plan to steal his weapon and manage to run away unharmed…", 0, 0, 0, 5,0, 0);
 
+-- spider
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("Fight Spider", "You do not fear spiders and have had a lot of experience in killing them at home.",  0, 0, 0, 10, 0, -5);
 INSERT INTO options (text, resolution,str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
@@ -97,3 +100,11 @@ VALUES ("Go for the treasure chest", "You attempt to run through to open the tre
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
 VALUES ("Do nothing and proceed through the dungeon", "You are scared of spiders and know the risk of going into a room full of spider webs and believe that the best option is to move on and to not risk dying from the spider queen.", 0, 0, 0, 0,0,0);
 
+-- bossfight
+-- whiteskirt
+INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Fight him head on", "We charge at each other. Due to my overwhelming strength he collapses first. I win this battle but I can't help but think about how sore my body is. He was a worthy opponent. I search his body and I find a White Skirt", "We charge at each other. His raw strength is leagues above my own as I'm sent back into a wall. My vision goes black. I’m dead." 20, 0, 0, 10, 0, 0);
+INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Run away from the man and lure him into a pitfall trap you prepared", "I run as fast as I can in the opposite direction. The man nearly catches me but my quicker maneuvering allows me to turn corners quicker, while he is sent into a wall and has to catch up. I wait behind a pitfall covered with thin planks and the man charges towards me but due to his excessive stomping the planks crumbles much like sand beneath him and he is impaled on the wooden stakes. I find a White Skirt on his corpse.", "Before I can even get around the first corner the man catches up easily and knocks me onto the floor with one punch. My vision goes black. I’m dead." 0, 15, 0, 0, 10, 0);
+INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
+VALUES ("Use an invisibility spell to hide", "I quickly cast an invisibility spell, vanish instantly and hide in one of the passage ways. The man charges where I once was but is very confused when he charges into nothing. He continues a mad dash down the hallway I came down as I follow him curiously. After a few minutes he collapses from exhaustion and I pick a White Skirt off of his body.", "You do not know any invisibility magic, but the man in the white skirt made you disappear into a wall. You are dead." 0, 0, 10, 0, 0, 10);
