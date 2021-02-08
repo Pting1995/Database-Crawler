@@ -1,27 +1,27 @@
 USE database_crawler;
-INSERT INTO locations (name, description) 
-VALUES ("Boulder", "An Ominous Boulder Blocks Your Path!");
-INSERT INTO locations (name, description) 
-VALUES ("King Pigeon", 'A very luxurious pigeon wearing cowboy boots is seated on a throne between you and the exit to this room. It says to you: Hmm, yes. All those who seek to continue forward and escape this place must engage in a battle of wits with our majesty." The pigeon gestures to a chessboard laid out in front of it.');
-INSERT INTO locations (name, description) 
-VALUES ("Furry room","In the next room there is a person (you think?) wearing a furry suit and holding nunchucks. The furry suit is purple. You cannot tell what animal it is supposed to represent, but you feel deeply unnerved. The furry perks up noticeable as you enter the room, but they seem to scan right past you as if they don’t see you. Hello? Is someone there? I forgot to put eyeholes in this thing! And I can’t seem to get it off. My god I’m so miserable. Please, help me!");
+INSERT INTO locations (name, description, img) 
+VALUES ("Boulder", "An Ominous Boulder Blocks Your Path!", "images/boulder-event.png");
+INSERT INTO locations (name, description, img) 
+VALUES ("King Pigeon", 'A very luxurious pigeon wearing cowboy boots is seated on a throne between you and the exit to this room. It says to you: Hmm, yes. All those who seek to continue forward and escape this place must engage in a battle of wits with our majesty." The pigeon gestures to a chessboard laid out in front of it.', "images/pigeon.png");
+INSERT INTO locations (name, description, img) 
+VALUES ("Furry room","In the next room there is a person (you think?) wearing a furry suit and holding nunchucks. The furry suit is purple. You cannot tell what animal it is supposed to represent, but you feel deeply unnerved. The furry perks up noticeable as you enter the room, but they seem to scan right past you as if they don’t see you. Hello? Is someone there? I forgot to put eyeholes in this thing! And I can’t seem to get it off. My god I’m so miserable. Please, help me!", "images/furry-event.jpg");
 
-INSERT INTO locations (name, description) 
-VALUES ("Goblin Room", "As you are walking through the dungeon, a mysterious goblin approaches you with a weapon…");
-INSERT INTO locations (name, description) 
-VALUES ("Spider Room", "You approach a room with spider webs but inside that room there is a treasure chest… You notice a big spider guarding the treasure chest.");
-INSERT INTO locations (name, description) 
-VALUES ("Minotaur Room", "You find yourself in a dead end with only one way out, but a wild Minotaur appears and is blocking your path…");
+INSERT INTO locations (name, description, img) 
+VALUES ("Goblin Room", "As you are walking through the dungeon, a mysterious goblin approaches you with a weapon…", "images/goblin.jpg");
+INSERT INTO locations (name, description, img) 
+VALUES ("Spider Room", "You approach a room with spider webs but inside that room there is a treasure chest… You notice a big spider guarding the treasure chest.", "images/spider.jpg");
+INSERT INTO locations (name, description, img) 
+VALUES ("Minotaur Room", "You find yourself in a dead end with only one way out, but a wild Minotaur appears and is blocking your path…", "images/minotaur.jpg");
 
-INSERT INTO locations (name, description) 
-VALUES ("Cat Encounter", "You’re walking down a hallway and see a cat.");
-INSERT INTO locations (name, description) 
-VALUES ("Mermaid on the Rock", "You walk into a giant cavern with an underground lake, in the middle sits a rock with a mermaid sleeping on it. The mermaid awakens as you approach and beckons you to her. What do you do?");
-INSERT INTO locations (name, description) 
-VALUES ("Old Couple", 'You are walking down a hallway when you hear the bickering of two people. After a minute of walking you cross paths with them. You notice an old man is carrying a solid steel rickshaw of supplies and the elderly woman is yelling at him about how white skirt is getting closer!!" What do you do?');
+INSERT INTO locations (name, description, img) 
+VALUES ("Cat Encounter", "You’re walking down a hallway and see a cat.", "images/cat-event.jpg");
+INSERT INTO locations (name, description, img) 
+VALUES ("Mermaid on the Rock", "You walk into a giant cavern with an underground lake, in the middle sits a rock with a mermaid sleeping on it. The mermaid awakens as you approach and beckons you to her. What do you do?", "images/mermaid-event.jpg");
+INSERT INTO locations (name, description, img) 
+VALUES ("Old Couple", 'You are walking down a hallway when you hear the bickering of two people. After a minute of walking you cross paths with them. You notice an old man is carrying a solid steel rickshaw of supplies and the elderly woman is yelling at him about how white skirt is getting closer!!" What do you do?', "images/old-couple-event.jpg");
 
-INSERT INTO locations (name, description) 
-VALUES ("White Skirt’s Howls’", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?");
+INSERT INTO locations (name, description, img) 
+VALUES ("White Skirt’s Howls’", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/bossfight-white-skirt.png");
 
 -- raffi
 -- boulder
@@ -79,7 +79,7 @@ VALUES ("Find a different solution","Attempt to tire out the minotaur", 0, 0, 0,
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Find a feather and use it to play with the cat", "The cat is a furmidable opponent as it furiously chases the feather in your hand. Your hand is very scratched up but you feel much faster", 0, 0, 0, 0, 5, 0, 7);
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Talk to the cat for a bit.", "The cat has nothing to say but looks mildly amused. Its tail flicks, signaling you to leave. At least you spun two tales at once.", 0, 0, 0, 0, 0, 2, 7);
+VALUES ("Tell the cat a story.", "The cat has nothing to say but looks mildly amused. Its tail flicks, signaling you to leave. At least you spun two tales at once...", 0, 0, 0, 0, 0, 2, 7);
 INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Chuck the cat as hard as your can into the air", "The cat is flung up into the air, but luckily lands purfectly on its feet, unharmed. The cat angrily looks back at you but walks away. You feel stronger but at what cost?...", 0, 0, 0, 3, 0, 0, 7);
 
