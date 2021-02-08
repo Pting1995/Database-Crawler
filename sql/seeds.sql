@@ -109,3 +109,6 @@ VALUES ("Use an invisibility spell to hide", "I quickly cast an invisibility spe
 
 INSERT INTO items (name, intelligence, strength, dexterity, description)
 VALUES ("BIG EFFIN SUWOARD", 0, 3, 0, "THIS EFFFEN SSSSSUWWWOOOAAARD IS AS BIG AS TWO O' YOU STACKED ON TOP O' YA!");
+
+INSERT INTO items (name, intelligence, strength, dexterity, description)
+VALUES ("White Skirt", 0, 2, 2, "This stylish skirt makes you feel stronger and faster. It also does a good job of covering up the unmentionables. Why did you wander into this dungeon naked?");
