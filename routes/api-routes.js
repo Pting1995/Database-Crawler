@@ -87,26 +87,32 @@ module.exports = function (app) {
     });
   });
 
+  // gets item by name
+  app.get("/api/item/:name", function (req, res) {
+    db.Item.findOne({ where: { name: req.params.name } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets item by id
+  app.get("/api/item/:id", function (req, res) {
+    db.Item.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets all item ids of a specific character
+  app.get("/api/inventory/:id", function (req, res) {
+    db.Item.findAll({ where: { CharacterId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+
+
   app.get("/api/characters/:id", function (req, res) {
     db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
       res.json(data);
     });
   });
-
-  app.put("/", (req, res) => {
-    db.Character.update(
-      {
-        strength: req.body.strength
-
-      },
-      {
-        intelligence: req.body.intelligence
-      },
-
-      {
-        where: { id: req.body.id }
-      }
-
-    ).then(() => res.send())
-  })
 };
