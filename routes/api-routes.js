@@ -66,8 +66,8 @@ module.exports = function (app) {
           description: "this is a very cool character"
           // then search again and return its data
         }).then(function () {
-          db.Character.findOne({ where: { UserId: req.user.id } }).then(function (data) {
-            res.json(data);
+          db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
+            res.json(data[data.length-1]);
           });
         });
       }

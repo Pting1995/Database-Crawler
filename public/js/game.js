@@ -191,14 +191,19 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: "This character escaped!"
                 };
+                sceneText.text(optionData.resolution);
                 // succeed!
                 $.ajax({
                     method: "PUT",
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
-                    console.log("getting end");
-                    window.location.replace("/ending");
+                    option1.attr("class", "win");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.attr("class", "win");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.attr("class", "win");
+                    option3.text("CLICK TO CONTINUE");
                 });
             }
             else {
@@ -206,13 +211,20 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: optionData.failure
                 };
+                sceneText.text(optionData.failure);
                 // die
                 $.ajax({
                     method: "PUT",
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
-                    window.location.replace("/ending");
+                    // death.html
+                    option1.attr("class", "lose");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.attr("class", "lose");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.attr("class", "lose");
+                    option3.text("CLICK TO CONTINUE");
                 });
 
             }
@@ -233,6 +245,14 @@ $(document).on("click", ".continue", function (event) {
     option2.attr("class", "option");
     option3.attr("class", "option");
     Start();
+});
+
+$(document).on("click", ".win", function (event) {
+    window.location.replace("/ending");
+});
+
+$(document).on("click", ".lose", function (event) {
+    window.location.replace("/death");
 });
 
 // on clicks for answers
