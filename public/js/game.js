@@ -101,7 +101,7 @@ function characterRender(id) {
 function scenarioRender(id) {
     $.get("/api/scenario/" + id).then(function (data) {
         sceneName.text(data.name);
-        sceneImage.attr("src", data.picture);
+        sceneImage.attr("src", data.img);
         sceneText.text(data.description);
     });
     $.get("/api/options/" + id).then(function (data) {
