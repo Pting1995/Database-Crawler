@@ -25,12 +25,12 @@ VALUES ("White Skirt’s Howls’", "I delve deeper into the dungeon, and I star
 
 -- raffi
 -- boulder
-INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
-VALUES ("Smash the boulder (with your fist)", "Your fist is sore, but you feel stronger. The boulder collapses into a heap of rubble.", 0, 0, 0, 5, 0, 0);
-INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
-VALUES ("Deftly leap over the boulder", "Wow! What a feat of acrobatics! You feel lighter on your feet already!", 0, 0, 0, 2, 3, 0);
-INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain) 
-VALUES ("Use your head?", "You smash your head repeatedly into the boulder until it somehow ends up out of your way (?) You seem to be having trouble recalling personal details, and the coordination in your fingers is on the fritz. Could you be concussed?", 0, 0, 0, 6, -1, -1);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+VALUES ("Smash the boulder (with your fist)", "Your fist is sore, but you feel stronger. The boulder collapses into a heap of rubble.", 0, 0, 0, 5, 0, 0, 1);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+VALUES ("Deftly leap over the boulder", "Wow! What a feat of acrobatics! You feel lighter on your feet already!", 0, 0, 0, 2, 3, 0, 1);
+INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+VALUES ("Use your head?", "You smash your head repeatedly into the boulder until it somehow ends up out of your way (?) You seem to be having trouble recalling personal details, and the coordination in your fingers is on the fritz. Could you be concussed?", 0, 0, 0, 6, -1, -1, 1);
 
 
 -- pigeon
