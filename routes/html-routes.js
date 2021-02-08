@@ -30,5 +30,13 @@ module.exports = function (app) {
 
   app.get("/game", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/game.html"));
-  })
+  });
+
+  app.get("/end", function (req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.sendFile(path.join(__dirname, "../public/ending.html"));
+    }
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
 };

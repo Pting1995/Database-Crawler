@@ -24,12 +24,20 @@ module.exports = function (sequelize, DataTypes) {
         // a short description of the item
         description: {
             type: DataTypes.STRING
+        },
+        createdAt: {
+            type: DataTypes.STRING,
+            default: null
+        },
+        updatedAt: {
+            type: DataTypes.STRING,
+            default: null
         }
     });
 
     // each item can belong to many creatures (each creature drops one item)
     Item.associate = function (models) {
-        Item.hasMany(models.Creature, {
+        Item.hasMany(models.Location, {
         });
     };
 

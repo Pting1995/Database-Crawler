@@ -175,7 +175,7 @@ $(document).on("click", ".option", function (event) {
                     data: info
                 }).then(function () {
                     // characterRender(info.id);
-                    console.log("we are at the continue phase");
+                    // replace options with continue
                     option1.attr("class", "continue");
                     option1.text("CLICK TO CONTINUE");
                     option2.attr("class", "continue");
@@ -184,10 +184,21 @@ $(document).on("click", ".option", function (event) {
                     option3.text("CLICK TO CONTINUE");
                 });
                 // get item
-                // replace options with continue
             }
             else {
+                var info = {
+                    id: characterData.id,
+                    death_message: optionData.failure
+                };
                 // die
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/update/character",
+                    data: info
+                }).then(function () {
+                    
+                });
+
             }
         });
     });
