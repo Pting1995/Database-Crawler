@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const { Router } = require("express");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -45,5 +46,93 @@ module.exports = function (app) {
         id: req.user.id
       });
     }
+    // getUserCharacter(req);
+  });
+
+  // app.get("/api/scenario", function (req, res) {
+  //   db.locations.findOne({ where: { : req.user.username } }).then(function (dbUser) {
+
+  //   });
+  // })
+
+  app.get("/api/scenario/:id", function (req, res) {
+    db.Location.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/start", function (req, res) {
+    // find character belonging to user id
+    db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
+      // if there are none
+      if (data[0] == null) {
+        // create one
+        db.Character.create({
+          UserId: req.user.id,
+          description: "this is a very cool character"
+          // then search again and return its data
+        }).then(function() {
+          db.Character.findOne({ where: { UserId: req.user.id } }).then(function (data) {
+            res.json(data);
+          });
+        });
+      }
+      else (res.json(data[0]));
+    });
+  });
+
+  // finds all options of a location id
+  app.get("/api/options/:id", function (req, res) {
+    db.Option.findAll({ where: { LocationId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // finds one id by its id
+  app.get("/api/option/:id", function (req, res) {
+    db.Option.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets item by name
+  app.get("/api/item/:name", function (req, res) {
+    db.Item.findOne({ where: { name: req.params.name } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets item by id
+  app.get("/api/item/:id", function (req, res) {
+    db.Item.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // gets all item ids of a specific character
+  app.get("/api/inventory/:id", function (req, res) {
+    db.Item.findAll({ where: { CharacterId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
+
+  // update character stats and location based on character id
+  app.put("/api/update/character", function(req, res) {
+    // Use the sequelize update method to update a todo to be equal to the value of req.body
+    // req.body will contain the id of the todo we need to update
+    console.log("starting update");
+    db.Character.update(
+      {strength: req.body.newStr, intelligence: req.body.newInt, dexterity: req.body.newDex, LocationId: req.body.newLoc},
+      {where: {id: req.body.id}}
+    );
+    console.log("ending update");
+    res.json(null);
+  });
+
+  // get character by id
+  app.get("/api/characters/:id", function (req, res) {
+    db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
   });
 };

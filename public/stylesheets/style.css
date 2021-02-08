@@ -25,3 +25,16 @@ button.btn {
 .btn {
   background-color: darkred;
 }
+
+
+.ending-box{
+  position:relative;
+  width: 600px;
+  height: 600px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 40px;
+  color: white;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+}

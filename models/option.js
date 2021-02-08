@@ -6,6 +6,14 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    resolution: {
+      type: DataTypes.STRING(1024),
+      allowNull: false
+    },
+    failure: {
+      type: DataTypes.STRING(1024),
+      defaultValue: null
+    },
     str_req: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -35,8 +43,28 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       defautValue: 0
+    },
+    createdAt: {
+      type: DataTypes.STRING,
+      default: null
+    },
+    updatedAt: {
+      type: DataTypes.STRING,
+      default: null
     }
   });
+  // each location has several options
+  Option.associate = function (models) {
+    Option.belongsTo(models.Location, {
+    });
+  };
+
+
+  // each location has several options
+  Option.associate = function (models) {
+    Option.belongsTo(models.Location, {
+    });
+  };
 
   return Option;
 
