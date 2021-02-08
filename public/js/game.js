@@ -244,9 +244,9 @@ function updateTodo(todo) {
 
 $(document).on("click", ".continue", function (event) {
     event.preventDefault();
-    option1.attr("class", "option");
-    option2.attr("class", "option");
-    option3.attr("class", "option");
+    option1.addClass("option");
+    option2.addClass("option");
+    option3.addClass("option");
     Start();
 });
 
