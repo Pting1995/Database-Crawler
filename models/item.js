@@ -36,8 +36,8 @@ module.exports = function (sequelize, DataTypes) {
     // each inventory has many items, each item is in many inventories
     // belongsToMany defines a many to many association
     Item.associate = function (models) {
-        Item.belongsToMany(models.Inventory, {
-            through: "item_to_inventory"
+        Item.belongsToMany(models.Character, {
+            through: "inventory"
         });
     };
 
