@@ -64,8 +64,8 @@ module.exports = function (app) {
   app.get("/api/start", function (req, res) {
     // find character belonging to user id
     db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
-      // if there are none
-      if (data[0] == null) {
+      // if there are none or if the most recent one is dead
+      if (data[0] == null || data[data.length()-1].death_message !== null) {
         // create one
         db.Character.create({
           UserId: req.user.id,

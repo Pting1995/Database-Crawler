@@ -22,6 +22,10 @@ module.exports = function (sequelize, DataTypes) {
         // a short description of the character
         description: {
             type: DataTypes.STRING
+        },
+        death_message: {
+            type: DataTypes.STRING,
+            defaultValue = null
         }
     });
 
