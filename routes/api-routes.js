@@ -65,7 +65,7 @@ module.exports = function (app) {
     // find character belonging to user id
     db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
       // if there are none or if the most recent one is dead
-      if (data[0] == null || data[data.length()-1].death_message !== null) {
+      if (data[0] == null || data[data.length-1].death_message !== null) {
         // create one
         db.Character.create({
           UserId: req.user.id,
@@ -120,12 +120,10 @@ module.exports = function (app) {
   app.put("/api/update/character", function(req, res) {
     // Use the sequelize update method to update a todo to be equal to the value of req.body
     // req.body will contain the id of the todo we need to update
-    console.log("starting update");
     db.Character.update(
       {strength: req.body.newStr, intelligence: req.body.newInt, dexterity: req.body.newDex, LocationId: req.body.newLoc},
       {where: {id: req.body.id}}
     );
-    console.log("ending update");
     res.json(null);
   });
 
