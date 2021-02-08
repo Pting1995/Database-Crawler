@@ -9,6 +9,10 @@ module.exports = function (sequelize, DataTypes) {
         // a short description of the location/encounter
         description: {
             type: DataTypes.STRING
+        },
+        img: {
+            type: DataTypes.STRING,
+            default: "#"
         }
     });
 
