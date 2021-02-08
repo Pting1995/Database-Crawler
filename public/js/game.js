@@ -92,11 +92,8 @@ function characterRender(id) {
         });
 
         characterDescription.text(data.description);
-        // data.strength
-        // data.intelligence
-        // data.dexterity
-        //chart goes here
-        // IMPORTANT RENDER A LIST OF ITEMS FOR THE CHARACTER
+        // find all items associated with this characters id in inventory
+        // display them and their stats
     });
 }
 
@@ -181,7 +178,12 @@ $(document).on("click", ".option", function (event) {
                     option3.attr("class", "continue");
                     option3.text("CLICK TO CONTINUE");
                 });
+
                 // get item
+                //      find item id associated with that boss
+                //      if it is not NULL
+                //      add it to inventory with its id and character id
+
             }
             else if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
                 // take to ending screen
@@ -189,14 +191,19 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: "This character escaped!"
                 };
+                sceneText.text(optionData.resolution);
                 // succeed!
                 $.ajax({
                     method: "PUT",
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
-                    console.log("getting end");
-                    window.location.replace("/ending");
+                    option1.attr("class", "win");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.attr("class", "win");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.attr("class", "win");
+                    option3.text("CLICK TO CONTINUE");
                 });
             }
             else {
@@ -204,13 +211,20 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: optionData.failure
                 };
+                sceneText.text(optionData.failure);
                 // die
                 $.ajax({
                     method: "PUT",
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
-                    window.location.replace("/ending");
+                    // death.html
+                    option1.attr("class", "lose");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.attr("class", "lose");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.attr("class", "lose");
+                    option3.text("CLICK TO CONTINUE");
                 });
 
             }
@@ -231,6 +245,14 @@ $(document).on("click", ".continue", function (event) {
     option2.attr("class", "option");
     option3.attr("class", "option");
     Start();
+});
+
+$(document).on("click", ".win", function (event) {
+    window.location.replace("/ending");
+});
+
+$(document).on("click", ".lose", function (event) {
+    window.location.replace("/death");
 });
 
 // on clicks for answers
