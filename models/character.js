@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         death_message: {
             type: DataTypes.STRING,
-            defaultValue = null
+            defaultValue : null
         }
     });
 
