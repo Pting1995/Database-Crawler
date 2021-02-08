@@ -51,7 +51,6 @@ var characterId;
 function Start() {
     // this data is the character data, grab their id
     $.get("/api/start").then(function (data) {
-        console.log(data, "-----------------------------------------------");
         characterId = data.id;
         var locationId = data.LocationId;
         characterRender(characterId);
@@ -155,7 +154,6 @@ Start();
 $(document).on("click", ".option", function (event) {
     event.preventDefault();
     var optionId = $(this).attr("data-value");
-    console.log(optionId);
     $.get("/api/option/" + optionId).then(function (optionData) {
         $.get("/api/characters/" + characterId).then(function (characterData) {
             if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
@@ -196,7 +194,7 @@ $(document).on("click", ".option", function (event) {
                     url: "/api/update/character",
                     data: info
                 }).then(function () {
-                    
+                    $.get("/end");
                 });
 
             }
