@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     Character.associate = function (models) {
         Character.belongsTo(models.Location, {
             foreignKey: {
-                defaultValue: null
+                defaultValue: 1
             }
         });
     };
