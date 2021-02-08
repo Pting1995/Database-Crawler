@@ -49,12 +49,6 @@ module.exports = function (app) {
     // getUserCharacter(req);
   });
 
-  // app.get("/api/scenario", function (req, res) {
-  //   db.locations.findOne({ where: { : req.user.username } }).then(function (dbUser) {
-
-  //   });
-  // })
-
   app.get("/api/scenario/:id", function (req, res) {
     db.Location.findOne({ where: { id: req.params.id } }).then(function (data) {
       res.json(data);
@@ -122,6 +116,17 @@ module.exports = function (app) {
     // req.body will contain the id of the todo we need to update
     db.Character.update(
       {strength: req.body.newStr, intelligence: req.body.newInt, dexterity: req.body.newDex, LocationId: req.body.newLoc},
+      {where: {id: req.body.id}}
+    );
+    res.json(null);
+  });
+
+   // update character stats and location based on character id
+   app.put("/api/kill/character", function(req, res) {
+    // Use the sequelize update method to update a todo to be equal to the value of req.body
+    // req.body will contain the id of the todo we need to update
+    db.Character.update(
+      {death_message: req.body.death_message},
       {where: {id: req.body.id}}
     );
     res.json(null);
