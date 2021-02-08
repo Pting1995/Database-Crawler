@@ -21,7 +21,10 @@ INSERT INTO locations (name, description, img)
 VALUES ("Old Couple", 'You are walking down a hallway when you hear the bickering of two people. After a minute of walking you cross paths with them. You notice an old man is carrying a solid steel rickshaw of supplies and the elderly woman is yelling at him about how white skirt is getting closer!!" What do you do?', "images/old-couple-event.jpg");
 
 INSERT INTO locations (name, description, img) 
-VALUES ("White Skirt’s Howls’", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/bossfight-white-skirt.png");
+VALUES ("White Skirt’s Howls", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/bossfight-white-skirt.png");
+
+INSERT INTO locations (name, description, img) 
+VALUES ("Monkey in the Forest", "I continue on my adventure and soon enter an underground rainforest with giant trees. How the trees grew underground, I know not but this is the most enchanting place I’ve been to in my life. It’s quiet except for some leaves rustling. There's no wind in the dungeon… I prepare for the worst. Suddenly a monkey appears, jumping from tree to vine. It’s quicker than anything I've seen in the dungeon. But hilariously it's too quick for its own mind to comprehend and slams into a tree trunk. What do I do?", "images/monkey.jpg");
 
 -- raffi
 -- boulder
@@ -106,3 +109,19 @@ INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_g
 VALUES ("Run away from the man and lure him into a pitfall trap you prepared", "I run as fast as I can in the opposite direction. The man nearly catches me but my quicker maneuvering allows me to turn corners quicker, while he is sent into a wall and has to catch up. I wait behind a pitfall covered with thin planks and the man charges towards me but due to his excessive stomping the planks crumbles much like sand beneath him and he is impaled on the wooden stakes. I find a White Skirt on his corpse.", "Before I can even get around the first corner the man catches up easily and knocks me onto the floor with one punch. My vision goes black. I’m dead.", 0, 15, 0, 0, 10, 0, 10);
 INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Use an invisibility spell to hide", "I quickly cast an invisibility spell, vanish instantly and hide in one of the passage ways. The man charges where I once was but is very confused when he charges into nothing. He continues a mad dash down the hallway I came down as I follow him curiously. After a few minutes he collapses from exhaustion and I pick a White Skirt off of his body.", "You do not know any invisibility magic, but the man in the white skirt made you disappear into a wall. You are dead.", 0, 0, 10, 0, 0, 10, 10);
+
+-- monkey
+INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+VALUES ("Draw your sword and charge the monkey", "My sword cleaves the monkey in half. It did nothing to harm me but there’s no way I could’ve beaten it if it charged me. I search the jungle and find a primitive treehouse. Upon searching it I found a BIG EFFIN SUWOARD.", "I swing at the monkey but my sword only hits a root. Before I know it the monkey is already behind me and I only see him because he snaps my neck so hard my head is on backwards. My vision goes black. I am dead.", 15, 0, 0, 10, 0, 0, 11);
+INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+VALUES ("Challenge the monkey to a race across the jungle.", "Even though his body is much more suited to the jungle my fitness allows you to beat him. The monkey gives you a BIG EFFIN SUWOARD. He clearly doesn't need such a big weapon that slows him down so much.", "He easily outspeeds me. In an effort to catch up I overshoot a vine and fall to the floor. My vision goes black I am dead.", 0, 20, 0, 0, 10, 0, 11);
+INSERT INTO options (text, resolution, failure, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+VALUES ("Talk to the monkey", "The monkey replies with an EEK EEK but he looks friendly enough. I leave some fruit on a nearby leaf and continue on my adventure. Before I make it out of the jungle the monkey catches up to me with fruit still smeared over his face. With a loud thump he drops a BIG EFFIN SUWOARD near me. I give a nod to the monkey and the monkey runs back into the forest.", "Something I said to the monkey made it angry. He throws a coconut at my head. My vision goes black. I am dead.", 0, 0, 10, 0, 0, 10, 11);
+
+
+
+
+INSERT INTO items (name, intelligence, strength, dexterity, description)
+VALUES ("BIG EFFIN SUWOARD", 0, 3, 0, "THIS EFFFEN SSSSSUWWWOOOAAARD IS AS BIG AS TWO O' YOU STACKED ON TOP O' YA!");
+INSERT INTO items (name, intelligence, strength, dexterity, description)
+VALUES ("White Skirt", 0, 2, 2, "This stylish skirt makes you feel stronger and faster. It also does a good job of covering up the unmentionables. Why did you wander into this dungeon naked?")
