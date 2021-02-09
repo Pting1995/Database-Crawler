@@ -27,6 +27,8 @@ module.exports = function (app) {
       });
   });
 
+
+
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
@@ -107,6 +109,16 @@ module.exports = function (app) {
   app.get("/api/item/:id", function (req, res) {
     db.Item.findOne({ where: { id: req.params.id } }).then(function (data) {
       res.json(data);
+    });
+  });
+
+  // put an item into a users inventory
+  app.post("/api/additem", function(req, res) {
+    db.inventory.create({
+      ItemId: req.body.itemid,
+      CharacterId: req.body.characterid
+    }).then(function() {
+      res.json(null);
     });
   });
 
