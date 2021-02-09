@@ -87,3 +87,27 @@ form.login {
 	background-image:-webkit-linear-gradient(top, rgba(255, 0, 0, 0.507), rgba(255, 0, 0, 0.383));
 
 }
+
+#scene-type{
+  color: #111; 
+  font-family: 'Open Sans Condensed', sans-serif; 
+  font-size: 48px; 
+  font-weight: 700; 
+  line-height: 48px; 
+  margin: 0 0 24px; 
+  padding: 0 30px; 
+  text-align: center; 
+  text-transform: uppercase;
+  /* font-weight: 100;
+  letter-spacing: 1;
+  font-size:36px;
+  font-weight:bold; */
+}
+
+#scene-text{
+  
+  font-weight: 100;
+  letter-spacing: 1;
+  font-size:24px;
+  font-weight: bold;
+}
