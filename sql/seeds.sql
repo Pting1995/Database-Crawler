@@ -75,7 +75,7 @@ VALUES ("Attempt to recite your strongest magic spell to annihilate him.", "I su
 
 -- austin
 -- goblin
-INSERT INTO options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+INSERT INTO Options (text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Ask for help", "He gives you his knowledge of the area",  0, 0, 0, 0, 0, 5, 5);
 INSERT INTO Options (Text, resolution,str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Run away", "The goblin is approaching you with hungry eyes and seems to want to kill you. You notice that he is moving very slowly and is carrying a weapon that looks useful. You come up with a plan to steal his weapon and manage to run away unharmed....", 0, 0, 0, 0, 5, 0, 5);
