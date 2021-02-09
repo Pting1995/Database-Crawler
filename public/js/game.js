@@ -130,8 +130,10 @@ function scenarioRender(id) {
         option1.attr("data-value", data[0].id);
         option2.text(data[1].text);
         option2.attr("data-value", data[1].id);
+        option2.show();
         option3.text(data[2].text);
         option3.attr("data-value", data[2].id);
+        option3.show();
     });
 }
 
@@ -178,9 +180,11 @@ $(document).on("click", ".option", function (event) {
                     option2.addClass("continue");
                     option2.text("CLICK TO CONTINUE");
                     option2.removeClass("option");
+                    option2.hide();
                     option3.addClass("continue");
                     option3.text("CLICK TO CONTINUE");
                     option3.removeClass("option");
+                    option3.hide();
                     // find location associated with option
                     $.get("/api/scenario/" + optionData.LocationId).then(function (locationData) {
                         // find item id associated with that boss
@@ -197,17 +201,17 @@ $(document).on("click", ".option", function (event) {
                                     if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
                                         // resolution text
                                         // increment stats
-                                        var info = {
+                                        var info2 = {
                                             id: characterData.id,
                                             newStr: characterData.strength + itemData.strength,
                                             newInt: characterData.intelligence + itemData.intelligence,
                                             newDex: characterData.dexterity + itemData.dexterity,
-                                            newLoc: characterData2.LocationId
+                                            newLoc: optionData.LocationId + 1
                                         };
                                         $.ajax({
                                             method: "PUT",
                                             url: "/api/update/character",
-                                            data: info
+                                            data: info2
                                         });
                                     }
                                 });
@@ -242,8 +246,10 @@ $(document).on("click", ".option", function (event) {
                     option1.text("CLICK TO CONTINUE");
                     option2.addClass("win");
                     option2.text("CLICK TO CONTINUE");
+                    option2.hide();
                     option3.addClass("win");
                     option3.text("CLICK TO CONTINUE");
+                    option3.hide();
                 });
             }
             else {
@@ -264,8 +270,10 @@ $(document).on("click", ".option", function (event) {
                     option1.text("CLICK TO CONTINUE");
                     option2.addClass("lose");
                     option2.text("CLICK TO CONTINUE");
+                    option2.hide();
                     option3.addClass("lose");
                     option3.text("CLICK TO CONTINUE");
+                    option3.hide();
                 });
 
             }
@@ -286,8 +294,10 @@ $(document).on("click", ".continue", function (event) {
     option1.removeClass("continue");
     option2.addClass("option");
     option2.removeClass("continue");
+    option2.show();
     option3.addClass("option");
     option3.removeClass("continue");
+    option3.show();
     Start();
 });
 
