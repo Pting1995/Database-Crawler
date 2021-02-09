@@ -153,7 +153,7 @@ $(document).on("click", ".option", function (event) {
     var optionId = $(this).attr("data-value");
     $.get("/api/option/" + optionId).then(function (optionData) {
         $.get("/api/characters/" + characterId).then(function (characterData) {
-            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 11) {
+            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
                 // resolution text
                 sceneText.text(optionData.resolution);
                 // increment stats
@@ -227,7 +227,7 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: optionData.failure
                 };
-                sceneText.text(optionData.failure);
+                console.log(optionData.failure);
                 // die
                 $.ajax({
                     method: "PUT",
@@ -235,6 +235,7 @@ $(document).on("click", ".option", function (event) {
                     data: info
                 }).then(function () {
                     // death.html
+                    sceneText.text(optionData.failure);
                     option1.addClass("lose");
                     option1.text("CLICK TO CONTINUE");
                     option2.addClass("lose");
