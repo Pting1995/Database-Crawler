@@ -153,9 +153,9 @@ $(document).on("click", ".option", function (event) {
     var optionId = $(this).attr("data-value");
     $.get("/api/option/" + optionId).then(function (optionData) {
         $.get("/api/characters/" + characterId).then(function (characterData) {
-            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 11) {
+            // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
+            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
                 // resolution text
-                sceneText.text(optionData.resolution);
                 // increment stats
                 var info = {
                     id: characterData.id,
@@ -171,6 +171,7 @@ $(document).on("click", ".option", function (event) {
                 }).then(function () {
                     // characterRender(info.id);
                     // replace options with continue
+                    sceneText.text(optionData.resolution);
                     option1.addClass("continue");
                     option1.removeClass("option");
                     option1.text("CLICK TO CONTINUE");
@@ -180,12 +181,25 @@ $(document).on("click", ".option", function (event) {
                     option3.addClass("continue");
                     option3.text("CLICK TO CONTINUE");
                     option3.removeClass("option");
+                    // find location associated with option
+                    $.get("/api/scenario/" + optionData.LocationId).then(function(locationData) {
+                        // find item id associated with that boss
+                        // if it is not NULL
+                        if (locationData.ItemId !== null) {
+                            var itemInfo = {itemid: locationData.ItemId, characterid: characterData.id};
+                            // add it to inventory with its id and character id
+                            $.post("/api/additem", itemInfo);
+                        }
+                    });
                 });
 
+
                 // get item
+                //      find location associated with option
                 //      find item id associated with that boss
                 //      if it is not NULL
                 //      add it to inventory with its id and character id
+
 
             }
             else if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
@@ -194,13 +208,13 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: "This character escaped!"
                 };
-                sceneText.text(optionData.resolution);
                 // succeed!
                 $.ajax({
                     method: "PUT",
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
+                    sceneText.text(optionData.resolution);
                     option1.addClass("win");
                     option1.text("CLICK TO CONTINUE");
                     option2.addClass("win");
@@ -214,7 +228,7 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: optionData.failure
                 };
-                sceneText.text(optionData.failure);
+                console.log(optionData.failure);
                 // die
                 $.ajax({
                     method: "PUT",
@@ -222,6 +236,7 @@ $(document).on("click", ".option", function (event) {
                     data: info
                 }).then(function () {
                     // death.html
+                    sceneText.text(optionData.failure);
                     option1.addClass("lose");
                     option1.text("CLICK TO CONTINUE");
                     option2.addClass("lose");
@@ -257,13 +272,4 @@ $(document).on("click", ".win", function (event) {
 $(document).on("click", ".lose", function (event) {
     window.location.replace("/death");
 });
-
-// on clicks for answers
-//      training/interactions
-//          somehow increment the character stats based on user choice
-//          function call to go to next scenario
-//      challenges/bosses
-//          if player is successful add item to their inventory
-//              if player unsuccessful character dies, player is taken to death screen
-//          function call to go to next scenario
 
