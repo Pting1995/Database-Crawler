@@ -283,8 +283,11 @@ function updateTodo(todo) {
 $(document).on("click", ".continue", function (event) {
     event.preventDefault();
     option1.addClass("option");
+    option1.removeClass("continue");
     option2.addClass("option");
+    option2.removeClass("continue");
     option3.addClass("option");
+    option3.removeClass("continue");
     Start();
 });
 
