@@ -171,12 +171,15 @@ $(document).on("click", ".option", function (event) {
                 }).then(function () {
                     // characterRender(info.id);
                     // replace options with continue
-                    option1.attr("class", "continue");
+                    option1.addClass("continue");
+                    option1.removeClass("option");
                     option1.text("CLICK TO CONTINUE");
-                    option2.attr("class", "continue");
+                    option2.addClass("continue");
                     option2.text("CLICK TO CONTINUE");
-                    option3.attr("class", "continue");
+                    option2.removeClass("option");
+                    option3.addClass("continue");
                     option3.text("CLICK TO CONTINUE");
+                    option3.removeClass("option");
                 });
 
                 // get item
@@ -198,11 +201,11 @@ $(document).on("click", ".option", function (event) {
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
-                    option1.attr("class", "win");
+                    option1.addClass("win");
                     option1.text("CLICK TO CONTINUE");
-                    option2.attr("class", "win");
+                    option2.addClass("win");
                     option2.text("CLICK TO CONTINUE");
-                    option3.attr("class", "win");
+                    option3.addClass("win");
                     option3.text("CLICK TO CONTINUE");
                 });
             }
@@ -219,11 +222,11 @@ $(document).on("click", ".option", function (event) {
                     data: info
                 }).then(function () {
                     // death.html
-                    option1.attr("class", "lose");
+                    option1.addClass("lose");
                     option1.text("CLICK TO CONTINUE");
-                    option2.attr("class", "lose");
+                    option2.addClass("lose");
                     option2.text("CLICK TO CONTINUE");
-                    option3.attr("class", "lose");
+                    option3.addClass("lose");
                     option3.text("CLICK TO CONTINUE");
                 });
 
@@ -241,9 +244,9 @@ function updateTodo(todo) {
 
 $(document).on("click", ".continue", function (event) {
     event.preventDefault();
-    option1.attr("class", "option");
-    option2.attr("class", "option");
-    option3.attr("class", "option");
+    option1.addClass("option");
+    option2.addClass("option");
+    option3.addClass("option");
     Start();
 });
 
