@@ -189,6 +189,29 @@ $(document).on("click", ".option", function (event) {
                             var itemInfo = { itemid: locationData.ItemId, characterid: characterData.id };
                             // add it to inventory with its id and character id
                             $.post("/api/additem", itemInfo);
+                            // find data for that item
+                            // add its stats to character stats
+                            $.get("/api/item/" + locationData.ItemId).then(function (itemData) {
+                                $.get("/api/characters/" + characterId).then(function (characterData) {
+                                    // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
+                                    if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
+                                        // resolution text
+                                        // increment stats
+                                        var info = {
+                                            id: characterData.id,
+                                            newStr: characterData.strength + itemData.strength,
+                                            newInt: characterData.intelligence + itemData.intelligence,
+                                            newDex: characterData.dexterity + itemData.dexterity,
+                                            newLoc: characterData.LocationId
+                                        };
+                                        $.ajax({
+                                            method: "PUT",
+                                            url: "/api/update/character",
+                                            data: info
+                                        });
+                                    }
+                                });
+                            });
                         }
                     });
                 });
