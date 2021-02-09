@@ -156,7 +156,6 @@ $(document).on("click", ".option", function (event) {
             // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
             if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
                 // resolution text
-                sceneText.text(optionData.resolution);
                 // increment stats
                 var info = {
                     id: characterData.id,
@@ -172,6 +171,7 @@ $(document).on("click", ".option", function (event) {
                 }).then(function () {
                     // characterRender(info.id);
                     // replace options with continue
+                    sceneText.text(optionData.resolution);
                     option1.addClass("continue");
                     option1.removeClass("option");
                     option1.text("CLICK TO CONTINUE");
