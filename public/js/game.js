@@ -153,6 +153,7 @@ $(document).on("click", ".option", function (event) {
     var optionId = $(this).attr("data-value");
     $.get("/api/option/" + optionId).then(function (optionData) {
         $.get("/api/characters/" + characterId).then(function (characterData) {
+            // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
             if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
                 // resolution text
                 sceneText.text(optionData.resolution);
@@ -207,13 +208,13 @@ $(document).on("click", ".option", function (event) {
                     id: characterData.id,
                     death_message: "This character escaped!"
                 };
-                sceneText.text(optionData.resolution);
                 // succeed!
                 $.ajax({
                     method: "PUT",
                     url: "/api/kill/character",
                     data: info
                 }).then(function () {
+                    sceneText.text(optionData.resolution);
                     option1.addClass("win");
                     option1.text("CLICK TO CONTINUE");
                     option2.addClass("win");
