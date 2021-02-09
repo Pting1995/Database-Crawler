@@ -192,7 +192,7 @@ $(document).on("click", ".option", function (event) {
                             // find data for that item
                             // add its stats to character stats
                             $.get("/api/item/" + locationData.ItemId).then(function (itemData) {
-                                $.get("/api/characters/" + characterId).then(function (characterData) {
+                                $.get("/api/characters/" + characterId).then(function (characterData2) {
                                     // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
                                     if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
                                         // resolution text
@@ -202,7 +202,7 @@ $(document).on("click", ".option", function (event) {
                                             newStr: characterData.strength + itemData.strength,
                                             newInt: characterData.intelligence + itemData.intelligence,
                                             newDex: characterData.dexterity + itemData.dexterity,
-                                            newLoc: characterData.LocationId
+                                            newLoc: characterData2.LocationId
                                         };
                                         $.ajax({
                                             method: "PUT",
@@ -283,8 +283,11 @@ function updateTodo(todo) {
 $(document).on("click", ".continue", function (event) {
     event.preventDefault();
     option1.addClass("option");
+    option1.removeClass("continue");
     option2.addClass("option");
+    option2.removeClass("continue");
     option3.addClass("option");
+    option3.removeClass("continue");
     Start();
 });
 
