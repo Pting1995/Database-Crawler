@@ -3,9 +3,10 @@ $(document).ready(function () {
     var restart = $("#make-char");
     
     cont.on("click", function (event) {
-        window.location.replace("/game.html");
+        window.location.replace("/game");
     });
     restart.on("click", function (event) {
-        window.location.replace("/game.html");
+        $.get("/api/restart");
+        window.location.replace("/game");
     })
 });

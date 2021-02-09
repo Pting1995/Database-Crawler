@@ -1,17 +1,27 @@
-// Creating our Inventory model
+// Creating our Location model (basically is an encounter)
 module.exports = function (sequelize, DataTypes) {
     var Inventory = sequelize.define("Inventory", {
-
+        
     });
 
-    // makes it so each inventory must belong to a specific character and links to their id
-    Inventory.associate = function (models) {
-        Inventory.belongsTo(models.Character, {
-            foreignKey: {
-                allowNull: false
-            }
+    Inventory.associate = (models) => {
+
+        models.Item.hasMany(models.Inventory, {
+            as: "Inventorys", foreignKey: "ItemId"
         });
-    };
+
+        models.Inventory.belongsTo(models.Item, {
+            foreignKey: "ItemId"
+        });
+
+        models.Character.hasMany(models.Inventory, {
+            as: "Inventorys", foreignKey: "CharacterId"
+        });
+
+        models.Inventory.belongsTo(models.Character, {
+            foreignKey: "CharacterId"
+        });
+    }
 
     return Inventory;
 };

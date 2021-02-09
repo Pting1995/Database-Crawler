@@ -27,6 +27,8 @@ module.exports = function (app) {
       });
   });
 
+
+
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
@@ -49,65 +51,105 @@ module.exports = function (app) {
     // getUserCharacter(req);
   });
 
-  // app.get("/api/scenario", function (req, res) {
-  //   db.locations.findOne({ where: { : req.user.username } }).then(function (dbUser) {
-
-  //   });
-  // })
-
   app.get("/api/scenario/:id", function (req, res) {
     db.Location.findOne({ where: { id: req.params.id } }).then(function (data) {
-      console.log(data);
       res.json(data);
     });
   });
 
-  app.get("/api/character/:id", function (req, res) {
-    db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
-      console.log(data);
-      res.json(data);
-    });
-  });
-
-  app.put("/", (req, res) => {
-    db.Character.update(
-      {
-        strength: req.body.strength
-
-      },
-      {
-        intelligence: req.body.intelligence
-      },
-
-      {
-        where: { id: req.body.id }
-      }
-
-    ).then(() => res.send())
-  })
-  // first find user id based on username
-  // using user id find character associated with that user (where killedby is null)
-  function getUserCharacter(req) {
-    var newCharacter = { intelligence: 0, strength: 0, dexterity: 0, description: "none", UserId: 1 };
-    db.Character.create(newCharacter).then(function (dbCharacter) {
-      console.log(dbCharacter);
-      db.User.findOne({ where: { username: req.user.username } }).then(function (dbUser) {
-        db.Character.findOne({ where: { UserId: dbUser.id } }).then(function (dbCreated) {
-          console.log(dbCreated);
+  app.get("/api/start", function (req, res) {
+    // find character belonging to user id
+    db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
+      // if there are none or if the most recent one is dead
+      if (data[0] == null || data[data.length - 1].death_message !== null) {
+        // create one
+        db.Character.create({
+          UserId: req.user.id,
+          description: "This character is you, dummy. They possess all of your virtues, and more importantly your vices."
+          // then search again and return its data
+        }).then(function () {
+          db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
+            res.json(data[data.length-1]);
+          });
         });
-      });
+      }
+      else (res.json(data[data.length-1]));
     });
-  }
+  });
 
+  app.get("/api/restart", function (req, res) {
+    db.Character.create({
+      UserId: req.user.id,
+      description: "This character is you, dummy. They possess all of your virtues, and more importantly your vices."
+    });
+  });
 
+  // finds all options of a location id
+  app.get("/api/options/:id", function (req, res) {
+    db.Option.findAll({ where: { LocationId: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
 
+  // finds one id by its id
+  app.get("/api/option/:id", function (req, res) {
+    db.Option.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
 
+  // gets item by id
+  app.get("/api/item/:id", function (req, res) {
+    console.log(req.params.id);
+    db.Item.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
 
+  // put an item into a users inventory
+  app.post("/api/additem", function(req, res) {
+    db.Inventory.create({
+      ItemId: req.body.itemid,
+      CharacterId: req.body.characterid
+    }).then(function() {
+      res.json(null);
+    });
+  });
 
+  // gets all item ids of a specific character in inventory
+  app.get("/api/inventory/:id", function (req, res) {
+    db.Inventory.findAll({ where: { CharacterId: req.params.id } }).then(function (data) {
+      // console.log(data);
+      res.json(data);
+    });
+  });
 
+  // update character stats and location based on character id
+  app.put("/api/update/character", function (req, res) {
+    // Use the sequelize update method to update a todo to be equal to the value of req.body
+    // req.body will contain the id of the todo we need to update
+    db.Character.update(
+      { strength: req.body.newStr, intelligence: req.body.newInt, dexterity: req.body.newDex, LocationId: req.body.newLoc },
+      { where: { id: req.body.id } }
+    );
+    res.json(null);
+  });
 
+  // update character stats and location based on character id
+  app.put("/api/kill/character", function (req, res) {
+    // Use the sequelize update method to update a todo to be equal to the value of req.body
+    // req.body will contain the id of the todo we need to update
+    db.Character.update(
+      { death_message: req.body.death_message },
+      { where: { id: req.body.id } }
+    );
+    res.json(null);
+  });
 
-
-
-
+  // get character by id
+  app.get("/api/characters/:id", function (req, res) {
+    db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.json(data);
+    });
+  });
 };

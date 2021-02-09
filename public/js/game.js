@@ -41,69 +41,258 @@ var sceneText = $("#scene-text");
 var option1 = $("#option1");
 var option2 = $("#option2");
 var option3 = $("#option3");
+var option = $(".option");
+var chartDiv = $("#chart-div");
+var inventory = $(".item-list");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
+var characterId;
 
 function Start() {
-    // function call for load scenario
+    // this data is the character data, grab their id
     $.get("/api/start").then(function (data) {
-
-    })
+        characterId = data.id;
+        var locationId = data.LocationId;
+        characterRender(characterId);
+        scenarioRender(locationId);
+    });
 }
 
 // renders right column with character information
-function characterRender() {
-    $.get("/api/characters").then(function (data) {
+function characterRender(id) {
+    chartDiv.empty();
+    var newCanvas = $("<canvas>");
+    newCanvas.attr("id", "myChart");
+    chartDiv.append(newCanvas);
+    $.get("/api/characters/" + id).then(function (data) {
+        characterId = id;
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'pie',
+
+            // The data for our dataset
+            data: {
+                labels: ['Strength', 'Intelligence', 'Dexterity'],
+                datasets: [{
+                    label: 'Character Stats',
+                    backgroundColor: ['rgb(214, 40, 40)', 'rgb(46, 94, 170)', 'rgb(50, 160, 93)'],
+                    borderColor: 'white',
+                    data: [
+                        data.strength,
+                        data.intelligence,
+                        data.dexterity
+
+                    ]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
 
         characterDescription.text(data.description);
-        // data.strength
-        // data.intelligence
-        // data.dexterity
-        //chart goes here
-    })
+        // find all items associated with this characters id in inventory
+
+        // display them and their stats
+    });
+    inventory.empty();
+    $.get("/api/inventory/" + characterId).then(function (inventoryData) {
+        console.log(inventoryData);
+        for(var i = 0; i < inventoryData.length; i++){
+            console.log(inventoryData[i].ItemId);
+
+            $.get("/api/item/" + inventoryData[i].ItemId).then(function(itemData) {
+                console.log(inventoryData[0].ItemId);
+                console.log(itemData);
+                var newLi = $("<li>");
+                var itemDesc = $("<p>");
+                var itemName = $("<h5>");
+                itemDesc.text(itemData.description);
+                itemName.text(itemData.name);
+                newLi.append(itemName);
+                newLi.append(itemDesc);
+                inventory.append(newLi);
+            });
+        }
+    });
 }
 
 // renders left column with scenario based on scenario information in sql database
 function scenarioRender(id) {
     $.get("/api/scenario/" + id).then(function (data) {
         sceneName.text(data.name);
-        sceneImage.attr("src", data.picture);
+        sceneImage.attr("src", data.img);
         sceneText.text(data.description);
-        option1.text(data.option1);
-        option2.text(data.option2);
-        option3.text(data.option3);
+    });
+    $.get("/api/options/" + id).then(function (data) {
+        option1.text(data[0].text);
+        option1.attr("data-value", data[0].id);
+        option2.text(data[1].text);
+        option2.attr("data-value", data[1].id);
+        option3.text(data[2].text);
+        option3.attr("data-value", data[2].id);
     });
 }
 
-scenarioRender(1);
+Start();
 
-// function to render death screen
-// shows what character was killed by
-// shows stats, explains death
-//      ie: you weren't strong enough to fight the minotaur head on
-function renderDeath() {
+// needs to go and get the option and all of its data
+// compare your stats to the required stats
+// if you're good
+//      update increment your stats appropriately
+//      update increase location by one
+//      if there is an item get appropriate item
+//      then render resolution text in scenario description
+//      replace the options with a continue button
+// if you're bad
+//      DIE
+//      render die message in scenario description
+$(document).on("click", ".option", function (event) {
+    event.preventDefault();
+    var optionId = $(this).attr("data-value");
+    $.get("/api/option/" + optionId).then(function (optionData) {
+        $.get("/api/characters/" + characterId).then(function (characterData) {
+            // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
+            if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
+                // resolution text
+                // increment stats
+                var info = {
+                    id: characterData.id,
+                    newStr: characterData.strength + optionData.str_gain,
+                    newInt: characterData.intelligence + optionData.int_gain,
+                    newDex: characterData.dexterity + optionData.dex_gain,
+                    newLoc: characterData.LocationId + 1
+                };
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/update/character",
+                    data: info
+                }).then(function () {
+                    // characterRender(info.id);
+                    // replace options with continue
+                    sceneText.text(optionData.resolution);
+                    option1.addClass("continue");
+                    option1.removeClass("option");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.addClass("continue");
+                    option2.text("CLICK TO CONTINUE");
+                    option2.removeClass("option");
+                    option3.addClass("continue");
+                    option3.text("CLICK TO CONTINUE");
+                    option3.removeClass("option");
+                    // find location associated with option
+                    $.get("/api/scenario/" + optionData.LocationId).then(function (locationData) {
+                        // find item id associated with that boss
+                        // if it is not NULL
+                        if (locationData.ItemId !== null) {
+                            var itemInfo = { itemid: locationData.ItemId, characterid: characterData.id };
+                            // add it to inventory with its id and character id
+                            $.post("/api/additem", itemInfo);
+                            // find data for that item
+                            // add its stats to character stats
+                            $.get("/api/item/" + locationData.ItemId).then(function (itemData) {
+                                $.get("/api/characters/" + characterId).then(function (characterData) {
+                                    // IMPORTANT! IN THIS LINE THE NUMBER HAS TO BE THE NUMBER OF SCENARIOS SO THE GAME DOESN'T END EARLY
+                                    if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req && characterData.LocationId < 12) {
+                                        // resolution text
+                                        // increment stats
+                                        var info = {
+                                            id: characterData.id,
+                                            newStr: characterData.strength + itemData.strength,
+                                            newInt: characterData.intelligence + itemData.intelligence,
+                                            newDex: characterData.dexterity + itemData.dexterity,
+                                            newLoc: characterData.LocationId
+                                        };
+                                        $.ajax({
+                                            method: "PUT",
+                                            url: "/api/update/character",
+                                            data: info
+                                        });
+                                    }
+                                });
+                            });
+                        }
+                    });
+                });
 
+
+                // get item
+                //      find location associated with option
+                //      find item id associated with that boss
+                //      if it is not NULL
+                //      add it to inventory with its id and character id
+
+
+            }
+            else if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
+                // take to ending screen
+                var info = {
+                    id: characterData.id,
+                    death_message: "This character escaped!"
+                };
+                // succeed!
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/kill/character",
+                    data: info
+                }).then(function () {
+                    sceneText.text(optionData.resolution);
+                    option1.addClass("win");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.addClass("win");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.addClass("win");
+                    option3.text("CLICK TO CONTINUE");
+                });
+            }
+            else {
+                var info = {
+                    id: characterData.id,
+                    death_message: optionData.failure
+                };
+                console.log(optionData.failure);
+                // die
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/kill/character",
+                    data: info
+                }).then(function () {
+                    // death.html
+                    sceneText.text(optionData.failure);
+                    option1.addClass("lose");
+                    option1.text("CLICK TO CONTINUE");
+                    option2.addClass("lose");
+                    option2.text("CLICK TO CONTINUE");
+                    option3.addClass("lose");
+                    option3.text("CLICK TO CONTINUE");
+                });
+
+            }
+        });
+    });
+});
+function updateTodo(todo) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/todos",
+        data: todo
+    }).then(getTodos);
 }
 
-// replace left column with a description of how you won the scenario
-// describe the item the player acquired (maybe image?)
-function renderWin() {
+$(document).on("click", ".continue", function (event) {
+    event.preventDefault();
+    option1.addClass("option");
+    option2.addClass("option");
+    option3.addClass("option");
+    Start();
+});
 
-    // go to next scenario
-}
+$(document).on("click", ".win", function (event) {
+    window.location.replace("/ending");
+});
 
-// Congrats! You escaped the dungeon!
-// renders stats and whatnot on left of screen
-function renderEscape() {
-
-}
-
-// on clicks for answers
-//      training/interactions
-//          somehow increment the character stats based on user choice
-//          function call to go to next scenario
-//      challenges/bosses
-//          if player is successful add item to their inventory
-//              if player unsuccessful character dies, player is taken to death screen
-//          function call to go to next scenario
+$(document).on("click", ".lose", function (event) {
+    window.location.replace("/death");
+});
 
