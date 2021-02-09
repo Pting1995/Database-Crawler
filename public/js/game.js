@@ -180,12 +180,25 @@ $(document).on("click", ".option", function (event) {
                     option3.addClass("continue");
                     option3.text("CLICK TO CONTINUE");
                     option3.removeClass("option");
+                    // find location associated with option
+                    $.get("/api/scenario/" + optionData.LocationId).then(function(locationData) {
+                        // find item id associated with that boss
+                        // if it is not NULL
+                        if (locationData.ItemId !== null) {
+                            var itemInfo = {itemid: locationData.ItemId, characterid: characterData.id};
+                            // add it to inventory with its id and character id
+                            $.post("/api/additem", itemInfo);
+                        }
+                    });
                 });
 
+
                 // get item
+                //      find location associated with option
                 //      find item id associated with that boss
                 //      if it is not NULL
                 //      add it to inventory with its id and character id
+
 
             }
             else if (characterData.strength >= optionData.str_req && characterData.intelligence >= optionData.int_req && characterData.dexterity >= optionData.dex_req) {
@@ -257,13 +270,4 @@ $(document).on("click", ".win", function (event) {
 $(document).on("click", ".lose", function (event) {
     window.location.replace("/death");
 });
-
-// on clicks for answers
-//      training/interactions
-//          somehow increment the character stats based on user choice
-//          function call to go to next scenario
-//      challenges/bosses
-//          if player is successful add item to their inventory
-//              if player unsuccessful character dies, player is taken to death screen
-//          function call to go to next scenario
 
