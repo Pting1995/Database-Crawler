@@ -43,7 +43,7 @@ var option2 = $("#option2");
 var option3 = $("#option3");
 var option = $(".option");
 var chartDiv = $("#chart-div");
-var itemList = $(".item-list");
+var inventory = $(".item-list");
 // load sql data for character
 // take you to the correct scenario based on your characters location_id
 var characterId;
@@ -93,7 +93,28 @@ function characterRender(id) {
 
         characterDescription.text(data.description);
         // find all items associated with this characters id in inventory
+
         // display them and their stats
+    });
+    inventory.empty();
+    $.get("/api/inventory/" + characterId).then(function (inventoryData) {
+        console.log(inventoryData);
+        for(var i = 0; i < inventoryData.length; i++){
+            console.log(inventoryData[i].ItemId);
+
+            $.get("/api/item/" + inventoryData[i].ItemId).then(function(itemData) {
+                console.log(inventoryData[0].ItemId);
+                console.log(itemData);
+                var newLi = $("<li>");
+                var itemDesc = $("<p>");
+                var itemName = $("<h5>");
+                itemDesc.text(itemData.description);
+                itemName.text(itemData.name);
+                newLi.append(itemName);
+                newLi.append(itemDesc);
+                inventory.append(newLi);
+            });
+        }
     });
 }
 
@@ -161,11 +182,11 @@ $(document).on("click", ".option", function (event) {
                     option3.text("CLICK TO CONTINUE");
                     option3.removeClass("option");
                     // find location associated with option
-                    $.get("/api/scenario/" + optionData.LocationId).then(function(locationData) {
+                    $.get("/api/scenario/" + optionData.LocationId).then(function (locationData) {
                         // find item id associated with that boss
                         // if it is not NULL
                         if (locationData.ItemId !== null) {
-                            var itemInfo = {itemid: locationData.ItemId, characterid: characterData.id};
+                            var itemInfo = { itemid: locationData.ItemId, characterid: characterData.id };
                             // add it to inventory with its id and character id
                             $.post("/api/additem", itemInfo);
                         }

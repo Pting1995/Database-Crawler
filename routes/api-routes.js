@@ -65,7 +65,7 @@ module.exports = function (app) {
         // create one
         db.Character.create({
           UserId: req.user.id,
-          description: "this is a very cool character"
+          description: "This character is you, dummy. They possess all of your virtues, and more importantly your vices."
           // then search again and return its data
         }).then(function () {
           db.Character.findAll({ where: { UserId: req.user.id } }).then(function (data) {
@@ -98,15 +98,9 @@ module.exports = function (app) {
     });
   });
 
-  // gets item by name
-  app.get("/api/item/:name", function (req, res) {
-    db.Item.findOne({ where: { name: req.params.name } }).then(function (data) {
-      res.json(data);
-    });
-  });
-
   // gets item by id
   app.get("/api/item/:id", function (req, res) {
+    console.log(req.params.id);
     db.Item.findOne({ where: { id: req.params.id } }).then(function (data) {
       res.json(data);
     });
@@ -122,9 +116,10 @@ module.exports = function (app) {
     });
   });
 
-  // gets all item ids of a specific character
+  // gets all item ids of a specific character in inventory
   app.get("/api/inventory/:id", function (req, res) {
-    db.Item.findAll({ where: { CharacterId: req.params.id } }).then(function (data) {
+    db.Inventory.findAll({ where: { CharacterId: req.params.id } }).then(function (data) {
+      // console.log(data);
       res.json(data);
     });
   });
