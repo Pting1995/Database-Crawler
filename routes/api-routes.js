@@ -114,7 +114,7 @@ module.exports = function (app) {
 
   // put an item into a users inventory
   app.post("/api/additem", function(req, res) {
-    db.inventory.create({
+    db.Inventory.create({
       ItemId: req.body.itemid,
       CharacterId: req.body.characterid
     }).then(function() {
