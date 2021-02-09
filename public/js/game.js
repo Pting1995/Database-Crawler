@@ -114,27 +114,6 @@ function scenarioRender(id) {
     });
 }
 
-// function to render death screen
-// shows what character was killed by
-// shows stats, explains death
-//      ie: you weren't strong enough to fight the minotaur head on
-function renderDeath() {
-
-}
-
-// replace left column with a description of how you won the scenario
-// describe the item the player acquired (maybe image?)
-function renderWin() {
-
-    // go to next scenario
-}
-
-// Congrats! You escaped the dungeon!
-// renders stats and whatnot on left of screen
-function renderEscape() {
-
-}
-
 Start();
 
 // needs to go and get the option and all of its data

@@ -7,10 +7,10 @@ form.login {
   margin-top: 50px;
 }
 
-button.btn {
+/* button.btn {
   margin-top: 5px;
   margin-right: 5px;
-}
+} */
 
 .card-content {
   padding: 10px;
@@ -46,17 +46,20 @@ button.btn {
   background-color: rgb(255, 255, 255,0.8);
 }
 
-.option1{
-  background-color: darkred;
-  margin-top: 5px;
-  margin-right: 5px;
-}
-.option2{
+#option1{
   background-color: darkred;
 }
-.option3{
+#option2{
   background-color: darkred;
 }
+#option3{
+  background-color: darkred;
+}
+
+.option {
+  display:block;
+}
+
 /* .push_button {
 	position: relative;
 	width: 150px;
@@ -79,7 +82,7 @@ button.btn {
 	border-radius:5px;
 } */
 
-.red:hover {
+.btn:hover {
 	background: darkred;
 	background-image:-webkit-linear-gradient(top, rgba(255, 0, 0, 0.507), rgba(255, 0, 0, 0.383));
 
