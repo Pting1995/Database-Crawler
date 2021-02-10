@@ -285,9 +285,6 @@ $(document).on("click", ".continue", function (event) {
     option1.addClass("option");
     option1.removeClass("continue");
     
-    option2.show();
-    
-    option3.show();
     Start();
 });
 

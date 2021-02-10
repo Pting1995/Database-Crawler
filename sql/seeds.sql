@@ -16,7 +16,7 @@ INSERT INTO Locations (name, description, img)
 VALUES ("Furry room",'In the next room there is a person (you think?) wearing a furry suit and holding nunchucks. The furry suit is purple. You cannot tell what animal it is supposed to represent, but you feel deeply unnerved. The furry perks up noticeable as you enter the room, but they seem to scan right past you as if they don’t see you. "Hello? Is someone there? I forgot to put eyeholes in this thing! And I can’t seem to get it off. My god I’m so miserable. Please, help me!"', "images/furry-event.jpg");
 
 INSERT INTO Locations (name, description, img, ItemId) 
-VALUES ("The Wise Rock", "I hear a cave-in up ahead but luckily it's nowhere near me. I continue onwards and soon I meet a rock golem. I watch him as he practices magic. He weaves magic spells together like an experienced magician but suddenly stops when he hears me and chucks a barrel sized rock in my direction like it's nothing. It clearly wasn’t meant to hit me but to scare me. What do I do?", "images/rock-golem.jpg", 1);
+VALUES ("The Wise Rock", "I hear a cave-in up ahead but luckily it's nowhere near me. I continue onwards and soon I meet a rock golem. I watch him as he practices magic. He weaves magic spells together like an experienced magician but suddenly stops when he hears me and chucks a barrel sized rock in my direction like it's nothing. It clearly wasn’t meant to hit me but to scare me. What do I do?", "images/rock-golem.png", 1);
 
 INSERT INTO Locations (name, description, img) 
 VALUES ("Goblin Room", "As you are walking through the dungeon, a mysterious goblin approaches you with a weapon…", "images/goblin.jpg");
@@ -36,7 +36,7 @@ INSERT INTO Locations (name, description, img)
 VALUES ("Old Couple", 'You are walking down a hallway when you hear the bickering of two people. After a minute of walking you cross paths with them. You notice an old man is carrying a solid steel rickshaw of supplies and the elderly woman is yelling at him about how white skirt is getting closer!!" What do you do?', "images/old-couple-event.jpg");
 
 INSERT INTO Locations (name, description, img, ItemId) 
-VALUES ("White Skirt’s Howls", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/bossfight-white-skirt.png", 3);
+VALUES ("White Skirt’s Howls", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/white-skirt.png", 3);
 
 -- raffi
 -- boulder
