@@ -1,0 +1,116 @@
+body {
+  background-image: url("../images/dungeon.png");
+}
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+/* button.btn {
+  margin-top: 5px;
+  margin-right: 5px;
+} */
+
+.card-content {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin: 10px;
+}
+
+.btn {
+  background-color: darkred;
+}
+
+
+.ending-box{
+  position:relative;
+  width: 700px;
+  height: 700px;
+  background-color: rgba(0,0,0,0.8);
+  padding: 40px;
+  color: white;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.card {
+  position:relative;
+  /* width: 700px;
+  height: 700px; */
+  background-color: rgb(255, 255, 255,0.8);
+}
+
+#option1{
+  background-color: darkred;
+  margin:5px;
+}
+#option2{
+  background-color: darkred;
+  margin:5px;
+}
+#option3{
+  background-color: darkred;
+  margin:5px;
+}
+
+.option {
+  display:block;
+}
+
+/* .push_button {
+	position: relative;
+	width: 150px;
+	height:40px;
+	text-align:center;
+	color: darkred;
+	text-decoration:none;
+	line-height:43px;
+
+	display: block;
+	margin: 30px;
+} */
+
+
+/* .red {
+	text-shadow:-1px -1px 0 black;
+	background: darkred;
+	border:1px solid darkred;
+	background-image:-webkit-linear-gradient(top, darkred, darkred);
+	border-radius:5px;
+} */
+
+.btn:hover {
+	background: darkred;
+	background-image:-webkit-linear-gradient(top, rgba(255, 0, 0, 0.507), rgba(255, 0, 0, 0.383));
+
+}
+
+#scene-type{
+  color: #111; 
+  font-family: 'Open Sans Condensed', sans-serif; 
+  font-size: 48px; 
+  font-weight: 700; 
+  line-height: 48px; 
+  margin: 0 0 24px; 
+  padding: 0 30px; 
+  text-align: center; 
+  text-transform: uppercase;
+  /* font-weight: 100;
+  letter-spacing: 1;
+  font-size:36px;
+  font-weight:bold; */
+}
+
+#scene-text{
+  
+  font-weight: 100;
+  letter-spacing: 1;
+  font-size:24px;
+  font-weight: bold;
+}
