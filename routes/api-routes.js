@@ -91,7 +91,7 @@ module.exports = function (app) {
     });
   });
 
-  // finds one id by its id
+  // finds one option by its id
   app.get("/api/option/:id", function (req, res) {
     db.Option.findOne({ where: { id: req.params.id } }).then(function (data) {
       res.json(data);
