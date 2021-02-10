@@ -113,7 +113,7 @@ VALUES ("Find a feather and use it to play with the cat", "The cat is a furmidab
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Tell the cat a story.", "The cat has nothing to say but looks mildly amused. Its tail flicks, signaling you to leave. At least you spun two tales at once...", 0, 0, 0, 0, 0, 2, 9);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Chuck the cat as hard as your can into the air", "The cat is flung up into the air, but luckily lands purfectly on its feet, unharmed. The cat angrily looks back at you but walks away. You feel stronger but at what cost?...", 0, 0, 0, 3, 0, 0, 9);
+VALUES ("Chuck the cat as hard as your can into the air", "The cat is flung farley up into the air, but luckily lands purfectly on its feet, unharmed. The cat angrily looks back at you but walks away. You feel stronger but at what cost?...", 0, 0, 0, 3, 0, 0, 9);
 
 -- mermaid
 INSERT INTO Options (Text, resoslution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
