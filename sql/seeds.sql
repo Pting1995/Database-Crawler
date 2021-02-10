@@ -52,7 +52,7 @@ VALUES ("Use your head?", "You smash your head repeatedly into the boulder until
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Sweep the pieces off the board and smash his majesty with it.", "I mean I guess it was the obvious solution. I bet you’re not very fun at parties...", 0, 0, 0, 2, 3, 0, 2);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Walk around the pigeon and out of the room.", "Those nunchucks do look like they’ll come in handy. Still, that’s kind of a dick move, ya know? Who hurt you? You perform a few practice swings of the nunchucks and feel a little bit more dexterous.", 0, 0, 0, 0, 1, 2, 2);
+VALUES ("Walk around the pigeon and out of the room.", "I mean I guess it was the obvious solution. I bet you’re not very at parties...", 0, 0, 0, 0, 1, 2, 2);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Try to beat the pigeon at chess.", "Wow ok. You did not know what you were getting yourself into, this pigeon must be grandmaster level at chess. At the same time you can tell it’s not really trying to win. After taking all of your pieces except your king and 1 pawn, the pigeon seems content to keep the game going on indefinitely. After what feels like hours, the pigeon actually falls asleep, and you move to the next room feeling slightly sheepish.", 0, 0, 0, 0, 0, 5, 2);
 
