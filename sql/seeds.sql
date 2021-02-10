@@ -16,7 +16,7 @@ INSERT INTO Locations (name, description, img)
 VALUES ("Furry room",'In the next room there is a person (you think?) wearing a furry suit and holding nunchucks. The furry suit is purple. You cannot tell what animal it is supposed to represent, but you feel deeply unnerved. The furry perks up noticeable as you enter the room, but they seem to scan right past you as if they don’t see you. "Hello? Is someone there? I forgot to put eyeholes in this thing! And I can’t seem to get it off. My god I’m so miserable. Please, help me!"', "images/furry-event.jpg");
 
 INSERT INTO Locations (name, description, img, ItemId) 
-VALUES ("The Wise Rock", "I hear a cave-in up ahead but luckily it's nowhere near me. I continue onwards and soon I meet a rock golem. I watch him as he practices magic. He weaves magic spells together like an experienced magician but suddenly stops when he hears me and chucks a barrel sized rock in my direction like it's nothing. It clearly wasn’t meant to hit me but to scare me. What do I do?", "images/rock-golem.jpg", 1);
+VALUES ("The Wise Rock", "I hear a cave-in up ahead but luckily it's nowhere near me. I continue onwards and soon I meet a rock golem. I watch him as he practices magic. He weaves magic spells together like an experienced magician but suddenly stops when he hears me and chucks a barrel sized rock in my direction like it's nothing. It clearly wasn’t meant to hit me but to scare me. What do I do?", "images/rock-golem.png", 1);
 
 INSERT INTO Locations (name, description, img) 
 VALUES ("Goblin Room", "As you are walking through the dungeon, a mysterious goblin approaches you with a weapon…", "images/goblin.jpg");
@@ -52,7 +52,7 @@ VALUES ("Use your head?", "You smash your head repeatedly into the boulder until
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Sweep the pieces off the board and smash his majesty with it.", "I mean I guess it was the obvious solution. I bet you’re not very fun at parties...", 0, 0, 0, 2, 3, 0, 2);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Walk around the pigeon and out of the room.", "Those nunchucks do look like they’ll come in handy. Still, that’s kind of a dick move, ya know? Who hurt you? You perform a few practice swings of the nunchucks and feel a little bit more dexterous.", 0, 0, 0, 0, 1, 2, 2);
+VALUES ("Walk around the pigeon and out of the room.", "I mean I guess it was the obvious solution. I bet you’re not very at parties...", 0, 0, 0, 0, 1, 2, 2);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Try to beat the pigeon at chess.", "Wow ok. You did not know what you were getting yourself into, this pigeon must be grandmaster level at chess. At the same time you can tell it’s not really trying to win. After taking all of your pieces except your king and 1 pawn, the pigeon seems content to keep the game going on indefinitely. After what feels like hours, the pigeon actually falls asleep, and you move to the next room feeling slightly sheepish.", 0, 0, 0, 0, 0, 5, 2);
 
@@ -113,7 +113,7 @@ VALUES ("Find a feather and use it to play with the cat", "The cat is a furmidab
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Tell the cat a story.", "The cat has nothing to say but looks mildly amused. Its tail flicks, signaling you to leave. At least you spun two tales at once...", 0, 0, 0, 0, 0, 2, 9);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
-VALUES ("Chuck the cat as hard as your can into the air", "The cat is flung up into the air, but luckily lands purfectly on its feet, unharmed. The cat angrily looks back at you but walks away. You feel stronger but at what cost?...", 0, 0, 0, 3, 0, 0, 9);
+VALUES ("Chuck the cat as hard as your can into the air", "The cat is flung farley up into the air, but luckily lands purfectly on its feet, unharmed. The cat angrily looks back at you but walks away. You feel stronger but at what cost?...", 0, 0, 0, 3, 0, 0, 9);
 
 -- mermaid
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
