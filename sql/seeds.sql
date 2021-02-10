@@ -36,7 +36,7 @@ INSERT INTO Locations (name, description, img)
 VALUES ("Old Couple", 'You are walking down a hallway when you hear the bickering of two people. After a minute of walking you cross paths with them. You notice an old man is carrying a solid steel rickshaw of supplies and the elderly woman is yelling at him about how white skirt is getting closer!!" What do you do?', "images/old-couple-event.jpg");
 
 INSERT INTO Locations (name, description, img, ItemId) 
-VALUES ("White Skirt’s Howls", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/bossfight-white-skirt.png", 3);
+VALUES ("White Skirt’s Howls", "I delve deeper into the dungeon, and I start to hear howls echo through the dungeon. I continue onwards while the howls get louder and I start to hear stomps that shake the ceiling. As you are walking down a hallway you suddenly hear a crash in front of you. A man in a white skirt charged into the wall and reduced it to rubble without any problems. He stares at the ground as the dust settles. It's clear he wants a fight, what do i do?", "images/white-skirt.png", 3);
 
 -- raffi
 -- boulder
@@ -116,7 +116,7 @@ INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_
 VALUES ("Chuck the cat as hard as your can into the air", "The cat is flung up into the air, but luckily lands purfectly on its feet, unharmed. The cat angrily looks back at you but walks away. You feel stronger but at what cost?...", 0, 0, 0, 3, 0, 0, 9);
 
 -- mermaid
-INSERT INTO Options (Text, resoCharacterslution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
+INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Use your powerful legs to jump across the lake to reach the maiden", 'As you swim to the rock you realize the mermaid was a seal. It seems to laugh at you, shouting “AUR AUR AUR” At least I feel a bit stronger?... i need glasses...', 0, 0, 0, 4, 1, 0, 10);
 INSERT INTO Options (Text, resolution, str_req, dex_req, int_req, str_gain, dex_gain, int_gain, LocationId) 
 VALUES ("Use your quick movements to run on water.", "I get a running start to run on water but I take one step in the water and sink. I end up swimming the rest of the way. When I look up, I realize the mermaid was a seal. The seal escapes back into the water. At least I got to go on a nice swim… i need glasses...", 0, 0, 0, 1, 3, 0, 10);
