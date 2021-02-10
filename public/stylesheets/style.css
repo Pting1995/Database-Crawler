@@ -63,27 +63,10 @@ form.login {
   display:block;
 }
 
-/* .push_button {
-	position: relative;
-	width: 150px;
-	height:40px;
-	text-align:center;
-	color: darkred;
-	text-decoration:none;
-	line-height:43px;
-
-	display: block;
-	margin: 30px;
-} */
-
-
-/* .red {
-	text-shadow:-1px -1px 0 black;
-	background: darkred;
-	border:1px solid darkred;
-	background-image:-webkit-linear-gradient(top, darkred, darkred);
-	border-radius:5px;
-} */
+img.scene-image {
+  max-height: 500px;
+  object-fit: contain;
+}
 
 .btn:hover {
 	background: darkred;
@@ -97,8 +80,7 @@ form.login {
   font-size: 48px; 
   font-weight: 700; 
   line-height: 48px; 
-  margin: 0 0 24px; 
-  padding: 0 30px; 
+  padding-bottom: 10px;
   text-align: center; 
   text-transform: uppercase;
   /* font-weight: 100;
@@ -108,9 +90,6 @@ form.login {
 }
 
 #scene-text{
-  
-  font-weight: 100;
-  letter-spacing: 1;
-  font-size:24px;
-  /* font-weight: bold; */
+  font-size:18px;
+  font-weight: bold;
 }
