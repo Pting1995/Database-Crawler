@@ -177,13 +177,9 @@ $(document).on("click", ".option", function (event) {
                     option1.addClass("continue");
                     option1.removeClass("option");
                     option1.text("CLICK TO CONTINUE");
-                    option2.addClass("continue");
-                    option2.text("CLICK TO CONTINUE");
-                    option2.removeClass("option");
+                    
                     option2.hide();
-                    option3.addClass("continue");
-                    option3.text("CLICK TO CONTINUE");
-                    option3.removeClass("option");
+                    
                     option3.hide();
                     // find location associated with option
                     $.get("/api/scenario/" + optionData.LocationId).then(function (locationData) {
@@ -244,11 +240,9 @@ $(document).on("click", ".option", function (event) {
                     sceneText.text(optionData.resolution);
                     option1.addClass("win");
                     option1.text("CLICK TO CONTINUE");
-                    option2.addClass("win");
-                    option2.text("CLICK TO CONTINUE");
+                    
                     option2.hide();
-                    option3.addClass("win");
-                    option3.text("CLICK TO CONTINUE");
+                    
                     option3.hide();
                 });
             }
@@ -268,11 +262,9 @@ $(document).on("click", ".option", function (event) {
                     sceneText.text(optionData.failure);
                     option1.addClass("lose");
                     option1.text("CLICK TO CONTINUE");
-                    option2.addClass("lose");
-                    option2.text("CLICK TO CONTINUE");
+                    
                     option2.hide();
-                    option3.addClass("lose");
-                    option3.text("CLICK TO CONTINUE");
+                    
                     option3.hide();
                 });
 
@@ -292,11 +284,9 @@ $(document).on("click", ".continue", function (event) {
     event.preventDefault();
     option1.addClass("option");
     option1.removeClass("continue");
-    option2.addClass("option");
-    option2.removeClass("continue");
+    
     option2.show();
-    option3.addClass("option");
-    option3.removeClass("continue");
+    
     option3.show();
     Start();
 });
