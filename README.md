@@ -25,6 +25,7 @@ This is a text based game with images that allows the user to play through an ad
 * [sequelize](https://sequelize.org/)
 * [Heroku](https://dashboard.heroku.com/)
 * [Jawsdb](https://www.jawsdb.com/)
+* [chart.js](https://www.chartjs.org/)
 
 ## Deployed Link
 
@@ -70,6 +71,16 @@ This code snippet shows the javascript linked from the main game page. This code
         });
 
         characterDescription.text(data.description);
+```
+
+The below code shows the javascript used to create the api route that the above code sends the get request through. It sends back data from sql.
+```javascript
+
+```
+
+The below code shows the definition of the model used by sequelize to interact with the sql database that the above code snippets pull information from.
+```javascript
+    
 ```
 
 
