@@ -75,7 +75,12 @@ This code snippet shows the javascript linked from the main game page. This code
 
 The below code shows the javascript used to create the api route that the above code sends the get request through. It sends back data from sql.
 ```javascript
-
+    // get character by id
+    app.get("/api/characters/:id", function (req, res) {
+    db.Character.findOne({ where: { id: req.params.id } }).then(function (data) {
+        res.json(data);
+        });
+    });
 ```
 
 The below code shows the definition of the model used by sequelize to interact with the sql database that the above code snippets pull information from.
