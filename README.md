@@ -136,18 +136,18 @@ The below code shows the definition of the model used by sequelize to interact w
 ## Authors
 
 * **Raffi Lepejian** 
-* **Peter Ting**
-* **Austin Woo**
-
-## Contact Information
 
 - [Link to Portfolio Site](https://rslepejian.github.io/portfolio/)
 - [Link to Github](https://github.com/rslepejian)
 - [Link to LinkedIn](https://linkedin.com/in/raffi-lepejian-071876153)
 
+* **Peter Ting**
+
 - [Link to Portfolio Site](https://pting1995.github.io/Portfolio-mk2/)
 - [Link to Github](https://github.com/Pting1995)
 - [Link to LinkedIn](https://www.linkedin.com/in/pting002/)
+
+* **Austin Woo**
 
 - [Link to Portfolio Site](https://austinwoo123.github.io/Updated-Portfolio/)
 - [Link to Github](https://github.com/austinwoo123)
