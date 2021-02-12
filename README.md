@@ -3,41 +3,14 @@
 ## Description
 This is a text based game with images that allows the user to play through an adventure centered around escaping a dungeon. It uses a sql database to store all persistent data relating to users and the characters that belong to them as well as the predefined contents of the game. This app utilizes uses a complex set of tables and relations including items and characters in a many to many association through a join table. Interactions to the sql were handled through mysql and sequelize and information was passed back and forth on an express server using api-routes.
 
-## Built With
-
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [Bootstrap](https://getbootstrap.com/)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [JS](https://www.javascript.com/)
-* [Jquery](https://jquery.com/)
-* [GitHub](https://github.com/)
-* [Git](https://git-scm.com/)
-* [node.js](https://nodejs.org/en/)
-* [npm](https://www.npmjs.com/)
-* [express](https://www.npmjs.com/package/express)
-* [express-session](https://www.npmjs.com/package/express-session)
-* [mysql](https://www.npmjs.com/package/mysql)
-* [MySQL Workbench](https://www.mysql.com/products/workbench/)
-* [mysql2](https://www.npmjs.com/package/mysql2)
-* [bcryptjs](https://www.npmjs.com/package/bcrypt)
-* [passport](http://www.passportjs.org/)
-* [passport-local](http://www.passportjs.org/packages/passport-local/)
-* [sequelize](https://sequelize.org/)
-* [Heroku](https://dashboard.heroku.com/)
-* [Jawsdb](https://www.jawsdb.com/)
-* [chart.js](https://www.chartjs.org/)
-
-## Deployed Link
-
-* [See Live Site](https://ancient-wave-96254.herokuapp.com/)
-
-## Usage Instructions
-If you are a guest and do not want to make a private account feel free to use this public login and password: "guest" , "0." You can also make your own login and password. The only restrictions are that both fields must have some text in them, and usernames must be unique. Passwords have no length or character restrictions as long as they are one character or longer.
-
 ## Preview of Working Site
 
 ![Image](public/images/dbcrawler-demo.gif)
 *[Extended Demo](https://drive.google.com/file/d/1-SvzGSks8Sw3YOxgf45oh9adlEvYHQqf/view)
+
+## Deployed Link
+
+* [See Live Site](https://ancient-wave-96254.herokuapp.com/)
 
 ## Code Snippet
 This code snippet shows the javascript linked from the main game page. This code is in charge of making an api request for data from the sql and then rendering it in the character information section of the screen. It uses chart.js to render a pie chart that shows the balance of your characters strengths and weaknesses. 
@@ -131,7 +104,32 @@ The below code shows the definition of the model used by sequelize to interact w
     };
 ```
 
+## Usage Instructions
+If you are a guest and do not want to make a private account feel free to use this public login and password: "guest" , "0." You can also make your own login and password. The only restrictions are that both fields must have some text in them, and usernames must be unique. Passwords have no length or character restrictions as long as they are one character or longer.
 
+## Built With
+
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [Bootstrap](https://getbootstrap.com/)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JS](https://www.javascript.com/)
+* [Jquery](https://jquery.com/)
+* [GitHub](https://github.com/)
+* [Git](https://git-scm.com/)
+* [node.js](https://nodejs.org/en/)
+* [npm](https://www.npmjs.com/)
+* [express](https://www.npmjs.com/package/express)
+* [express-session](https://www.npmjs.com/package/express-session)
+* [mysql](https://www.npmjs.com/package/mysql)
+* [MySQL Workbench](https://www.mysql.com/products/workbench/)
+* [mysql2](https://www.npmjs.com/package/mysql2)
+* [bcryptjs](https://www.npmjs.com/package/bcrypt)
+* [passport](http://www.passportjs.org/)
+* [passport-local](http://www.passportjs.org/packages/passport-local/)
+* [sequelize](https://sequelize.org/)
+* [Heroku](https://dashboard.heroku.com/)
+* [Jawsdb](https://www.jawsdb.com/)
+* [chart.js](https://www.chartjs.org/)
 
 ## Authors
 
