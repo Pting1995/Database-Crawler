@@ -149,6 +149,6 @@ The below code shows the definition of the model used by sequelize to interact w
 - [Link to Github](https://github.com/Pting1995)
 - [Link to LinkedIn](https://www.linkedin.com/in/pting002/)
 
-- [Link to Portfolio Site](#)
+- [Link to Portfolio Site](https://austinwoo123.github.io/Updated-Portfolio/)
 - [Link to Github](https://github.com/austinwoo123)
-- [Link to LinkedIn]()
+- [Link to LinkedIn](https://www.linkedin.com/in/awoo95/)
