@@ -31,6 +31,9 @@ This is a text based game with images that allows the user to play through an ad
 
 * [See Live Site](https://ancient-wave-96254.herokuapp.com/)
 
+## Usage Instructions
+If you are a guest and do not want to make a private account feel free to use this public login and password: "guest" , "0." You can also make your own login and password. The only restrictions are that both fields must have some text in them, and usernames must be unique. Passwords have no length or character restrictions as long as they are one character or longer.
+
 ## Preview of Working Site
 
 ![Image](public/images/dbcrawler-demo.gif)
