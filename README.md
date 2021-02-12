@@ -33,7 +33,8 @@ This is a text based game with images that allows the user to play through an ad
 
 ## Preview of Working Site
 
-![Image]()
+![Image](public/images/dbcrawler-demo.gif)
+*[Extended Demo]()
 
 ## Code Snippet
 This code snippet shows the javascript linked from the main game page. This code is in charge of making an api request for data from the sql and then rendering it in the character information section of the screen. It uses chart.js to render a pie chart that shows the balance of your characters strengths and weaknesses. 
@@ -62,7 +63,6 @@ This code snippet shows the javascript linked from the main game page. This code
                         data.strength,
                         data.intelligence,
                         data.dexterity
-
                     ]
                 }]
             },
